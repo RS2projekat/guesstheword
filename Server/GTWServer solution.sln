@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{EDC33071-BDCB-4C43-9618-B30A121522EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTWServer", "Server\GTWServer.csproj", "{EDC33071-BDCB-4C43-9618-B30A121522EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

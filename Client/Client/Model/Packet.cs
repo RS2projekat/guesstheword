@@ -74,6 +74,12 @@ namespace Common
         }
 
         // ----------------------------------------------------------------------
+        public XElement AddCommand(int command)
+        {
+            return AddCommand(command.ToString());
+        }
+
+        // ----------------------------------------------------------------------
         public XElement AddElement(string parentNode, string elementName, string value)
         {
             Debug.Assert(_xmlDocument.Root != null, "_xmlDocument.Root != null");

@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Client.View.LoginView"
+        Title="Login" Height="300" Width="300" Background="DarkGray">
+    <Grid>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxUsername" HorizontalAlignment="Left" 
+                 Height="26" Margin="134,85,0,0" TextWrapping="Wrap" 
+                 VerticalAlignment="Top" Width="112"
+                 />
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="63,121,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonLogin" Content="Login" HorizontalAlignment="Left" Margin="80,178,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="ButtonRegister" Content="Register" HorizontalAlignment="Left" Margin="171,178,0,0" VerticalAlignment="Top" Width="75"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="134,121,0,0" VerticalAlignment="Top" Width="112" Height="26"/>
+        <Label Content="Please enter username and password:" HorizontalAlignment="Left" Margin="37,44,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelStatus" Content="" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="272"/>
+
+    </Grid>
+</Window>

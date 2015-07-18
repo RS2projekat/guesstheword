@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using Client.Controller;
+using Server.Controller;
 
-namespace Client
+namespace Server.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -14,13 +14,15 @@ namespace Client
             InitializeComponent();
             try
             {
-                new MainController(this);
+                MainController main = new MainController();
+                main.Init(this);
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Exception", MessageBoxButton.OK);
             }
-           
         }
+
+       
     }
 }

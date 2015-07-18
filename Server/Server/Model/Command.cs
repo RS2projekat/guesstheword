@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Common
+namespace Server.Model
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class Command

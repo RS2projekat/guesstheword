@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Xml.Linq;
-namespace Common
+
+namespace Server.Model
 {
     public class Packet
     {
