@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
+using System.Windows;
 using System.Xml.Linq;
 
 namespace Server.Model
@@ -57,9 +59,9 @@ namespace Server.Model
         // ----------------------------------------------------------------------
         public void CreateNewXml()
         {
-            _xmlDocument = new XDocument(new XElement("gtw", new XAttribute("version", XmlVersion)),
-                new XElement("control"), 
-                new XElement("data"));
+            _xmlDocument = new XDocument(new XElement("gtw", new XAttribute("version", XmlVersion),
+                new XElement("control"),
+                new XElement("data")));
         }
 
         // ----------------------------------------------------------------------
@@ -75,11 +77,25 @@ namespace Server.Model
         }
 
         // ----------------------------------------------------------------------
+        public XElement AddCommand(int command)
+        {
+            return AddCommand(command.ToString());
+        }
+
+        public XElement AddDataElement(string elementName)
+        {
+            XElement xmlElement = new XElement(elementName);
+            XElement parent = _xmlDocument.Root.Element("data");
+            parent.Add(xmlElement);
+            return xmlElement;
+        }
+
+        // ----------------------------------------------------------------------
         public XElement AddElement(string parentNode, string elementName, string value)
         {
             Debug.Assert(_xmlDocument.Root != null, "_xmlDocument.Root != null");
             XElement parent = _xmlDocument.Root.Element(parentNode);
-            
+
             if (parent == null)
             {
                 parent = new XElement(parentNode);
@@ -92,16 +108,66 @@ namespace Server.Model
             return xmlElement;
         }
 
-        public Byte[] ToByte(string message)
+        // ----------------------------------------------------------------------
+        public string GetString(string name)
         {
-            Byte[] byteMessage = new byte[message.Length + 1];
-            
-            for(int i = 0; i < message.Length; i++)
-            {
-                byteMessage[i] = Convert.ToByte(message[i]);
-            }
-
-            return byteMessage;
+            XElement valueElement = DataNode.Element(name);
+            if (valueElement == null)
+                return string.Empty;
+            return valueElement.Value;
         }
+
+        // ----------------------------------------------------------------------
+        public int GetInt(string name)
+        {
+            XElement valueElement = DataNode.Element(name);
+            if (valueElement == null)
+                return -1;
+            try
+            {
+                return Convert.ToInt32(valueElement.Value);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid integer.");
+            }
+            return -1;
+        }
+
+        //------------------------------------------------------------------------------
+        public string ReadControl(string element)
+        {
+            try
+            {
+                return ReadElement("control", element);
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        //------------------------------------------------------------------------------
+        public int GetCommand()
+        {
+            return Convert.ToInt32(ReadControl("command"));
+        }
+
+        //------------------------------------------------------------------------------
+        private string ReadElement(string parentNode, string elementName)
+        {
+            try
+            {
+                if (_xmlDocument.Root.Element(parentNode).Element(elementName) != null)
+                    return _xmlDocument.Root.Element(parentNode).Element(elementName).Value;
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        
     }
 }

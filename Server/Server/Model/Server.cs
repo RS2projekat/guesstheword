@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows;
+using System.Xml.Linq;
 
 namespace Server.Model
 {
@@ -16,6 +18,7 @@ namespace Server.Model
 
         public static List<ClientSocket> ClientSockets = new List<ClientSocket>();
 
+        private static Action<Packet, Socket> PackageReceivedCallback;
         private static AsyncObservableCollection<LogMessage> _messageList;
         private int _numberOfPendingClients = 10;
         private static Byte[] _buffer = new byte[1024];
@@ -26,9 +29,10 @@ namespace Server.Model
             return ClientSockets.Count > 0;
         }
 
-        public void StartServer(Action successCallback, AsyncObservableCollection<LogMessage> messageList)
+        public void StartServer(Action successCallback, AsyncObservableCollection<LogMessage> messageList, Action<Packet, Socket> packageCallback)
         {
             _messageList = messageList;
+            PackageReceivedCallback = packageCallback;
             _messageList.Add(new LogMessage("Server started listening"));
             ServerListener.Bind(new IPEndPoint(IPAddress.Any, 27015));
             ServerListener.Listen(_numberOfPendingClients);
@@ -39,8 +43,7 @@ namespace Server.Model
         private static void AcceptCallback(IAsyncResult result)
         {
             Socket socket = ServerListener.EndAccept(result);
-            _messageList.Add(new LogMessage("Client connected "));
-            ClientSockets.Add(new ClientSocket(socket));
+            _messageList.Add(new LogMessage("Client connected"));
             socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(OnBeginReceiveCallback), socket); 
             ServerListener.BeginAccept(new AsyncCallback(AcceptCallback), null);
         }
@@ -51,15 +54,21 @@ namespace Server.Model
             try
             {
                 Socket socket = (Socket) result.AsyncState;
-                 int received  = socket.EndReceive(result);
+                int received  = socket.EndReceive(result);
 
                 byte[] dataBuffer = new byte[received];
                 Array.Copy(_buffer, dataBuffer, received);
 
-                string text = "Message received: " + Encoding.ASCII.GetString(dataBuffer);
-                _messageList.Add(new LogMessage(text));
+
+                Packet core = new Packet();
+                string dataBufferStr = ByteToString(dataBuffer);
    
-                SendData(socket, "Server je odgovorio");
+                core.XmlDocument = XDocument.Parse(dataBufferStr, LoadOptions.None);
+
+                PackageReceivedCallback(core, socket);
+
+
+                socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(OnBeginReceiveCallback), socket); 
             }
             catch (SocketException e)
             {
@@ -68,16 +77,60 @@ namespace Server.Model
            
         }
 
+        public static void SendNotificationToAll(Packet core)
+        {
+            foreach (ClientSocket clientSocket in ClientSockets)
+            {
+                if (clientSocket.Socket.Connected)
+                    SendData(clientSocket.Socket, core);
+            }
+        }
+
         //todo
         public static void ExchangePacketAsync(Packet core, ServerMessageLinqHandler successHandler, ServerMessageErrorLinqHandler errorHandler)
         {
             
         }
 
-        private static void SendData(Socket client, string message)
+        // Method that converts byte to string
+        public static string ByteToString(byte[] message)
         {
-            byte[] data = Encoding.ASCII.GetBytes(message);
-            client.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(OnBeginSend), client);
+            StringBuilder str = new StringBuilder(message.Length);
+            for (int i = 0; i < message.Length; i++)
+            {
+                if (message[i] == ('\r') || message[i] == '\n' || message[i] == '\0')
+                    continue;
+
+                str.Append(Convert.ToChar(message[i]));
+            }
+
+            return str.ToString();
+        }
+
+        // Method that converts string message to byte
+        private static Byte[] StringToByte(string message)
+        {
+            Byte[] byteMessage = new byte[message.Length + 1];
+
+            for (int i = 0; i < message.Length; i++)
+            {
+                byteMessage[i] = Convert.ToByte(message[i]);
+            }
+
+            return byteMessage;
+        }
+
+        public static void SendData(Socket client, Packet core)
+        {
+            byte[] data = StringToByte(core.RawXml);
+            try
+            {
+                client.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(OnBeginSend), client);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private static void OnBeginSend(IAsyncResult result)

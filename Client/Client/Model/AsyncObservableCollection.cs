@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Threading;
 
-namespace Server.Model
+namespace Client.Model
 {
     public class AsyncObservableCollection<T> : ObservableCollection<T>
     {

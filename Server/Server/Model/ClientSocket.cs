@@ -1,17 +1,21 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 
 namespace Server.Model
 {
     public class ClientSocket
     {
+        
         public ClientSocket(Socket client)
         {
             Socket = client;
         }
 
-
+        public String NickName { get; set; }
 
         public Socket Socket;
+
+
 
         public bool Connected
         {

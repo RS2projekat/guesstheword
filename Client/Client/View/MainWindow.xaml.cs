@@ -2,7 +2,7 @@
 using System.Windows;
 using Client.Controller;
 
-namespace Client
+namespace Client.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows;
 using System.Xml.Linq;
-namespace Common
+
+namespace Client.Model
 {
     public class Packet
     {
@@ -56,9 +58,9 @@ namespace Common
         // ----------------------------------------------------------------------
         public void CreateNewXml()
         {
-            _xmlDocument = new XDocument(new XElement("gtw", new XAttribute("version", XmlVersion)),
-                new XElement("control"), 
-                new XElement("data"));
+            _xmlDocument = new XDocument(new XElement("gtw", new XAttribute("version", XmlVersion),
+                new XElement("control"),
+                new XElement("data")));
         }
 
         // ----------------------------------------------------------------------
@@ -84,7 +86,7 @@ namespace Common
         {
             Debug.Assert(_xmlDocument.Root != null, "_xmlDocument.Root != null");
             XElement parent = _xmlDocument.Root.Element(parentNode);
-            
+
             if (parent == null)
             {
                 parent = new XElement(parentNode);
@@ -97,16 +99,64 @@ namespace Common
             return xmlElement;
         }
 
-        public Byte[] ToByte(string message)
+        // ----------------------------------------------------------------------
+        public string GetString(string name)
         {
-            Byte[] byteMessage = new byte[message.Length + 1];
-            
-            for(int i = 0; i < message.Length; i++)
-            {
-                byteMessage[i] = Convert.ToByte(message[i]);
-            }
+            XElement valueElement = DataNode.Element(name);
+            if (valueElement == null)
+                return string.Empty;
+            return valueElement.Value;
+        }
 
-            return byteMessage;
+        // ----------------------------------------------------------------------
+        public int GetInt(string name)
+        {
+            XElement valueElement = DataNode.Element(name);
+            if (valueElement == null)
+                return -1;
+            try
+            {
+                return Convert.ToInt32(valueElement.Value);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid integer.");
+            }
+            return -1;
+        }
+
+        //------------------------------------------------------------------------------
+        public string ReadControl(string element)
+        {
+            try
+            {
+                return ReadElement("control", element);
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        //------------------------------------------------------------------------------
+        public int GetCommand()
+        {
+            return Convert.ToInt32(ReadControl("command"));
+        }
+
+        //------------------------------------------------------------------------------
+        private string ReadElement(string parentNode, string elementName)
+        {
+            try
+            {
+                if (_xmlDocument.Root.Element(parentNode).Element(elementName) != null)
+                    return _xmlDocument.Root.Element(parentNode).Element(elementName).Value;
+                return string.Empty;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
     }
 }

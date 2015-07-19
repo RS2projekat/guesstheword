@@ -1,11 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Timers;
 using System.Windows;
-using Client.Controller;
+using System.Xml.Linq;
 
 namespace Client.Model
 {
@@ -15,15 +14,15 @@ namespace Client.Model
         private static Timer _aTimer;
         private static Action ConnectErrorCallback;
         private static Action DisconnectCallback;
-        public static IAsyncResult OnEndDisconnect { get; set; }
         private static Byte[] _buffer = new byte[1024];
-
+        private static Action<Packet> PacketReceivedCallback;
         // ---------------------------------------------------------------
         public static void Disconnect(Action successDisconect)
         {
             DisconnectCallback = successDisconect;
             try
             {
+                ClientSocket.Shutdown(SocketShutdown.Both);
                 ClientSocket.BeginDisconnect(false, OnBeginDisconnect, ClientSocket);
             }
             catch (Exception e)
@@ -32,6 +31,7 @@ namespace Client.Model
             }
         }
 
+        // ---------------------------------------------------------------
         public static bool IsConnected()
         {
             try
@@ -42,12 +42,22 @@ namespace Client.Model
         }
 
         // ---------------------------------------------------------------
-        public static void Connect(Action successCallback, Action errorCallback)
+        public static void Send(Packet core)
+        {
+            string message = core.RawXml;
+            byte[] buffer = StringToByte(message);
+            ClientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, OnBeginSend, null);
+
+        }
+
+        // ---------------------------------------------------------------
+        public static void Connect(Action successCallback, Action errorCallback, Action<Packet> packetCallback)
         {
             try
             {
                 ClientSocket.Connect(IPAddress.Loopback, 27015);
                 successCallback();
+                PacketReceivedCallback = packetCallback;
                 _aTimer = new Timer(500);
                 _aTimer.Enabled = true;
                 _aTimer.Elapsed += OnTimedCheckConnection;
@@ -61,30 +71,56 @@ namespace Client.Model
                 _aTimer.Elapsed += OnTimedErrorConnectionEvent;
             }
 
-            if (IsConnected())
+            if (ClientSocket.Connected)
                 ClientSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, OnBeginReceive, null);
         }
 
+        // ---------------------------------------------------------------
         private static void OnBeginReceive(IAsyncResult result)
         {
-            int received = ClientSocket.EndReceive(result);
-            byte[] dataBuffer = new byte[received];
-            Array.Copy(_buffer, dataBuffer, received);
-            string text = "Message received: " + Encoding.ASCII.GetString(dataBuffer);
-            MessageBox.Show(text);
+            try
+            {
+                int received = ClientSocket.EndReceive(result);
+                byte[] dataBuffer = new byte[received];
+                Array.Copy(_buffer, dataBuffer, received);
+
+                Packet core = new Packet();
+                string dataBufferStr = ByteToString(dataBuffer);
+                core.XmlDocument = XDocument.Parse(dataBufferStr, LoadOptions.None);
+                PacketReceivedCallback(core);
+
+                ClientSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None,
+                    new AsyncCallback(OnBeginReceive), ClientSocket);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
+       
+
+        // ---------------------------------------------------------------
         public static void Send(string msg)
         {
-            byte[] data = Encoding.ASCII.GetBytes(msg);
-            ClientSocket.BeginSend(data, 0, data.Length, SocketFlags.None, OnBeginSend, null);
+            try
+            {
+                byte[] data = Encoding.ASCII.GetBytes(msg);
+                ClientSocket.BeginSend(data, 0, data.Length, SocketFlags.None, OnBeginSend, null);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
+        // ---------------------------------------------------------------
         private static void OnBeginSend(IAsyncResult result)
         {
             ClientSocket.EndSend(result);
         }
 
+        // ---------------------------------------------------------------
         private static void OnTimedCheckConnection(object sender, ElapsedEventArgs e)
         {
             if (!IsConnected())
@@ -118,13 +154,42 @@ namespace Client.Model
             try
             {
                 Socket socket = (Socket) result.AsyncState;
-                socket.EndDisconnect(OnEndDisconnect);
+                socket.EndDisconnect(result);
                 DisconnectCallback();
             }
             catch (SocketException e)
             {
                 MessageBox.Show(e.Message);
             }
+        }
+
+
+        // Method that converts string message to byte
+        private static Byte[] StringToByte(string message)
+        {
+            Byte[] byteMessage = new byte[message.Length + 1];
+
+            for (int i = 0; i < message.Length; i++)
+            {
+                byteMessage[i] = Convert.ToByte(message[i]);
+            }
+
+            return byteMessage;
+        }
+
+        // Method that converts byte to string
+        public static string ByteToString(byte[] message)
+        {
+            StringBuilder str = new StringBuilder(message.Length);
+            for (int i = 0; i < message.Length; i++)
+            {
+                if (message[i] == ('\r') || message[i] == '\n' || message[i] == '\0')
+                    continue;
+
+                str.Append(Convert.ToChar(message[i]));
+            }
+
+            return str.ToString();
         }
     }
 }
