@@ -8,13 +8,13 @@ namespace Client.Model
         public const int
             REGISTER                                                            = 0, // Register new user
             LOGIN                                                               = 1, // Login into the server
-            LOGOUT                                                              = 2, // Login of the server
+            LOGOUT_REQUEST                                                      = 2, // Logout of the server
             MESSAGE                                                             = 3, // Chat message
             SERVER_MESSAGE                                                      = 4, // Server message
             USER_DISCONNECT                                                     = 5, // Other user dissconected
             USER_NICKNAME_IN_USE                                                = 6, // there is already user with that nickname
-            USER_SUCCESSFULL_LOGIN                                              = 7, // when user logs in successfull
-            NEW_USER                                                            = 8, // indicates that new user logged in, so client could refresh user list
+            UNUSED2                                                             = 7, 
+            REFRESH_USER_LIST                                                   = 8, // indicates that  client needs to refresh user list
             UNUSED3                                                             = 9,
             UNUSED4                                                             = 10,
             UNUSED5                                                             = 11,

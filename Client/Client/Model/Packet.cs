@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Client.Model

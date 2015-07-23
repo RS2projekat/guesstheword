@@ -73,7 +73,7 @@ namespace Client.Controller
         {
             if (string.IsNullOrWhiteSpace(Model.NickName))
             {
-                
+                //todo error validation
             }
             View.LabelStatus.Content = "Connecting...";
             DoConnection();
@@ -120,7 +120,11 @@ namespace Client.Controller
             });
 
             // After we connected we need to login with nickname/password
-            Model.Login();
+            if (Model.Login())
+                View.Dispatcher.Invoke(() =>
+                {
+                    View.DialogResult = true;
+                });
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Documents;
 using System.Xml.Linq;
@@ -10,7 +11,13 @@ namespace Client.Controller
     public class MainController
     {
         private LoginController _login;
-        private AsyncObservableCollection<ClientModel> Users;
+        private AsyncObservableCollection<ClientModel> _users;
+
+        public AsyncObservableCollection<ClientModel> Users
+        {
+            get { return _users; }
+            set { _users = value; }
+        }
         public MainController(MainWindow window)
         {
             View = window;
@@ -38,19 +45,14 @@ namespace Client.Controller
 
             switch (command)
             {
-                case Command.USER_SUCCESSFULL_LOGIN:
-                    _login.View.Dispatcher.Invoke(() =>
-                    {
-                        _login.View.DialogResult = true;
-                    });
-                   
-                    break;
-                case Command.NEW_USER:
+                case Command.REFRESH_USER_LIST:
                     XElement dataElement = core.DataNode;
                     Users.Clear();
                     foreach (XElement userElement in dataElement.Element("users").Elements("user"))
                     {
                         ClientModel temp = new ClientModel();
+                        if (Users.Where(x => x.NickName == userElement.Value).Count() != 0)
+                            continue;
                         temp.NickName = userElement.Value;
                         Users.Add(temp);
                     }
@@ -86,6 +88,11 @@ namespace Client.Controller
 
         private void ViewOnClosing(object sender, CancelEventArgs cancelEventArgs)
         {
+            Packet core = new Packet();
+            core.AddCommand(Command.LOGOUT_REQUEST);
+            core.AddData("username", Model.NickName);
+            Connection.Send(core);
+
             if (Connection.ClientSocket.Connected)
             {
                 Connection.Disconnect(CloseWindow);
@@ -94,7 +101,10 @@ namespace Client.Controller
 
         private void CloseWindow()
         {
-            View.Close();
+            View.Dispatcher.Invoke(() =>
+            {
+                View.Close();
+            });
         }
 
        

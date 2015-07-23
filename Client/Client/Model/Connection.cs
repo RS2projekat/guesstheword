@@ -2,27 +2,31 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Timers;
 using System.Windows;
 using System.Xml.Linq;
+using Timer = System.Timers.Timer;
 
 namespace Client.Model
 {
+
     public static class Connection
     {
-        public static Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static Timer _aTimer;
         private static Action ConnectErrorCallback;
         private static Action DisconnectCallback;
         private static Byte[] _buffer = new byte[1024];
-        private static Action<Packet> PacketReceivedCallback;
+        private static Action<Packet> PacketReceivedCallback { get; set; }
+        public static Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
         // ---------------------------------------------------------------
         public static void Disconnect(Action successDisconect)
         {
             DisconnectCallback = successDisconect;
             try
             {
-                ClientSocket.Shutdown(SocketShutdown.Both);
+                //ClientSocket.Shutdown(SocketShutdown.Both);
                 ClientSocket.BeginDisconnect(false, OnBeginDisconnect, ClientSocket);
             }
             catch (Exception e)
@@ -46,7 +50,7 @@ namespace Client.Model
         {
             string message = core.RawXml;
             byte[] buffer = StringToByte(message);
-            ClientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, OnBeginSend, null);
+            ClientSocket.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, OnBeginSend, ClientSocket);
 
         }
 
@@ -55,12 +59,18 @@ namespace Client.Model
         {
             try
             {
-                ClientSocket.Connect(IPAddress.Loopback, 27015);
-                successCallback();
+                IPEndPoint remoteEP = new IPEndPoint(IPAddress.Loopback, 27015);
+
+                // Create a TCP/IP socket.
+
+                ClientSocket.BeginConnect(remoteEP, OnBeginConnect, ClientSocket);
+
                 PacketReceivedCallback = packetCallback;
+                successCallback();
                 _aTimer = new Timer(500);
                 _aTimer.Enabled = true;
                 _aTimer.Elapsed += OnTimedCheckConnection;
+
             }
 
             catch (SocketException)
@@ -71,8 +81,29 @@ namespace Client.Model
                 _aTimer.Elapsed += OnTimedErrorConnectionEvent;
             }
 
-            if (ClientSocket.Connected)
-                ClientSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, OnBeginReceive, null);
+            
+        }
+
+        // ---------------------------------------------------------------
+        private static void OnBeginConnect(IAsyncResult ar)
+        {
+            try
+            {
+                // Complete the connection.
+                if (ClientSocket.Connected)
+                {
+                    ClientSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, OnBeginReceive, ClientSocket);
+                }
+
+
+                Socket client = (Socket)ar.AsyncState;
+                client.EndConnect(ar);
+                // Signal that the connection has been made.;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
 
         // ---------------------------------------------------------------
@@ -80,17 +111,19 @@ namespace Client.Model
         {
             try
             {
-                int received = ClientSocket.EndReceive(result);
-                byte[] dataBuffer = new byte[received];
-                Array.Copy(_buffer, dataBuffer, received);
+                Socket client = (Socket)result.AsyncState;
 
-                Packet core = new Packet();
-                string dataBufferStr = ByteToString(dataBuffer);
-                core.XmlDocument = XDocument.Parse(dataBufferStr, LoadOptions.None);
-                PacketReceivedCallback(core);
+                int bytesRead = client.EndReceive(result);
+               
+                Packet receivedPacket = new Packet();
+                string response = ByteToString(_buffer);
+                receivedPacket.XmlDocument = XDocument.Parse(response, LoadOptions.None);
+                PacketReceivedCallback(receivedPacket);
+
 
                 ClientSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None,
-                    new AsyncCallback(OnBeginReceive), ClientSocket);
+                        new AsyncCallback(OnBeginReceive), ClientSocket);
+
             }
             catch (Exception e)
             {
@@ -105,8 +138,9 @@ namespace Client.Model
         {
             try
             {
+                msg += "\n";
                 byte[] data = Encoding.ASCII.GetBytes(msg);
-                ClientSocket.BeginSend(data, 0, data.Length, SocketFlags.None, OnBeginSend, null);
+                ClientSocket.BeginSend(data, 0, data.Length, SocketFlags.None, OnBeginSend, ClientSocket);
             }
             catch (Exception e)
             {
@@ -117,7 +151,16 @@ namespace Client.Model
         // ---------------------------------------------------------------
         private static void OnBeginSend(IAsyncResult result)
         {
-            ClientSocket.EndSend(result);
+            try
+            {
+                Socket client = (Socket) result.AsyncState;
+                client.EndSend(result);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
         }
 
         // ---------------------------------------------------------------
@@ -153,8 +196,8 @@ namespace Client.Model
         {
             try
             {
-                Socket socket = (Socket) result.AsyncState;
-                socket.EndDisconnect(result);
+                Socket client = (Socket) result.AsyncState;
+                client.EndDisconnect(result);
                 DisconnectCallback();
             }
             catch (SocketException e)
@@ -167,15 +210,9 @@ namespace Client.Model
         // Method that converts string message to byte
         private static Byte[] StringToByte(string message)
         {
-            Byte[] byteMessage = new byte[message.Length + 1];
-
-            for (int i = 0; i < message.Length; i++)
-            {
-                byteMessage[i] = Convert.ToByte(message[i]);
-            }
-
-            return byteMessage;
+            return Encoding.UTF8.GetBytes(message);
         }
+
 
         // Method that converts byte to string
         public static string ByteToString(byte[] message)

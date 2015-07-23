@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using System.Xml.Linq;
 
 namespace Server.Model
 {
@@ -14,8 +15,6 @@ namespace Server.Model
         public String NickName { get; set; }
 
         public Socket Socket;
-
-
 
         public bool Connected
         {

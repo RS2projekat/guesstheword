@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows;
 
 namespace Client.Model
 {
@@ -9,10 +10,20 @@ namespace Client.Model
         //todo encryption for pw
         public string Password { get; set; }
 
-        public void Login()
+        public bool Login()
         {
-            Packet core = PrepareLoginPacket();
-            Connection.Send(core);
+            try
+            {
+                Packet core = PrepareLoginPacket();
+                Connection.Send(core);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+
+            return true;
         }
 
         private Packet PrepareLoginPacket()

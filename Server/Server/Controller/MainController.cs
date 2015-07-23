@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows;
@@ -39,34 +40,20 @@ namespace Server.Controller
             }
             else if (View.ButtonServerStart.Content.ToString() == "Stop")
             {
-                if (Server.HasClients())
+                Server.StopServer(() =>
                 {
-                    var answer = MessageBox.Show("There are users connected, are you sure you want to stop server?",
-                        "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                    if (answer != MessageBoxResult.Yes)
-                        return;
-                }
+                    View.LabelServerStatus.Background = Brushes.Red;
+                    View.LabelServerStatus.Content = "Server stopped...";
 
-                
-                foreach (ClientSocket clientSocket in Model.Server.ClientSockets)
-                {
-                    try
-                    {
-                        clientSocket.Socket.Disconnect(false);
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show(e.Message);
-                    }
-                }
+                    View.ButtonServerStart.Content = "Start";
+                });
 
-                View.LabelServerStatus.Background = Brushes.Red;
-                View.LabelServerStatus.Content = "Server stopped...";
-
-                View.ButtonServerStart.Content = "Start";
+              
             }
 
         }
+
+      
 
         public void StartServer()
         {
@@ -76,12 +63,13 @@ namespace Server.Controller
         private void PacketReceivedCallback(Packet core, Socket client)
         {
             int command = core.GetCommand();
-
+            string nickName = "";
+            Packet returnedCore;
             switch (command)
             {
                 case Command.LOGIN: // login
 
-                    string nickName = core.GetString("nickname");
+                    nickName = core.GetString("nickname");
                     /*  if (ClientSockets.First(x => x.NickName == nickName) != null) TODO
                       {
                           var returnCore = new Packet();
@@ -92,28 +80,34 @@ namespace Server.Controller
                         ClientSocket clientSocket = new ClientSocket(client);
                         clientSocket.NickName = nickName;
                         Model.Server.ClientSockets.Add(clientSocket);
-                        
+
+                        MessageList.Add(new LogMessage("Client (" + nickName + ") connected"));
                         // Send response that user have been successfully connected
-                        core = new Packet();
-                        core.AddCommand(Command.USER_SUCCESSFULL_LOGIN);
-                        Model.Server.SendData(client, core);
-
-                        // Send notification to other users that new client has been connected so list can be refreshed
-                        core = Packet.Instance;
-                        core.AddCommand(Command.NEW_USER);
-                        XElement usersElement = core.AddDataElement("users");
-
-                        foreach (ClientSocket socket in Model.Server.ClientSockets)
-                        {
-                            XElement user = new XElement("user");
-                            user.Value = socket.NickName;
-                            usersElement.Add(user);
-                        }
-
-                        Model.Server.SendNotificationToAll(core);
+                        RefreshClientsUsersList();
+                    }
+                    break;
+                case Command.LOGOUT_REQUEST:
+                    var xElement = core.DataNode.Element("username");
+                    if (xElement != null) nickName = xElement.Value;
+                    if (string.IsNullOrWhiteSpace(nickName))
+                        return;
+                    if (Model.Server.ClientSockets.Count(x => x.NickName == nickName) > 0)
+                    {
+                        int id =
+                            Model.Server.ClientSockets.IndexOf(
+                                Model.Server.ClientSockets.First(x => x.NickName == nickName));
+                        Model.Server.ClientSockets.RemoveAt(id);
+                        MessageList.Add(new LogMessage("Client (" + nickName + ") disconnected"));
+                        RefreshClientsUsersList();
                     }
                     break;
             }
+        }
+
+        public void RefreshClientsUsersList()
+        {
+            Packet returnedCore = Model.Server.GetConnectedClients();
+            Model.Server.SendNotificationToAll(returnedCore);
         }
 
         // -----------------------------------------------------------------------------------
