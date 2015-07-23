@@ -1,7 +1,13 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using System.Xml.Linq;
 using Client.Model;
 using Client.View;
@@ -13,6 +19,11 @@ namespace Client.Controller
         private LoginController _login;
         private AsyncObservableCollection<ClientModel> _users;
         private AsyncObservableCollection<string> _messages;
+
+
+        private ObservableCollection<CustomPoint> coordinates = new ObservableCollection<CustomPoint>();
+        private bool clicked = false;
+        private Canvas previousCanvas;
 
         public AsyncObservableCollection<ClientModel> Users
         {
@@ -85,6 +96,72 @@ namespace Client.Controller
         {
             View.Closing += ViewOnClosing;
             View.ButtonSendChat.Click += ButtonSendChatOnClick;
+            View.Canvas.MouseDown += CanvasOnMouseDown;
+            View.Canvas.MouseMove += CanvasOnMouseMove;
+            View.Canvas.MouseUp += CanvasOnMouseUp;
+            View.ButtonClear.Click += ButtonClearOnClick;
+            View.ButtonUndo.Click += ButtonUndoOnClick;
+        }
+
+        private void ButtonUndoOnClick(object sender, RoutedEventArgs routedEventArgs)
+        {
+            if (previousCanvas != null)
+            {
+                int i = View.Canvas.Children.IndexOf(previousCanvas);
+                if (i > 0)
+                {
+                    View.Canvas.Children.RemoveAt(i);
+                    previousCanvas = (Canvas)View.Canvas.Children[i - 1];
+                }
+                else if (i == 0)
+                {
+                    View.Canvas.Children.Clear();
+                    previousCanvas = null;
+                }
+
+
+            }
+        }
+
+        private void ButtonClearOnClick(object sender, RoutedEventArgs routedEventArgs)
+        {
+            coordinates.Clear();
+            View.Canvas.Children.Clear();
+        }
+
+        private void CanvasOnMouseUp(object sender, MouseButtonEventArgs mouseButtonEventArgs)
+        {
+            Canvas obj = new Canvas();
+            for (int i = 0; i < coordinates.Count - 5; i += 5)
+            {
+
+                Line line = new Line();
+                line.Stroke = Brushes.Red;
+                line.X1 = coordinates[i].X;
+                line.X2 = coordinates[i + 5].X;
+                line.Y1 = coordinates[i].Y;
+                line.Y2 = coordinates[i + 5].Y;
+                line.StrokeThickness = 2;
+                obj.Children.Add(line);
+                previousCanvas = obj;
+            }
+            View.Canvas.Children.Add(obj);
+            coordinates.Clear();
+        }
+
+        private void CanvasOnMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && clicked)
+            {
+                // MessageBox.Show(string.Format("Move. Mouse position x: {0} y: {1}", e.GetPosition(this).X, e.GetPosition(this).Y));
+                coordinates.Add(new CustomPoint(Convert.ToInt32(e.GetPosition(View.Canvas).X), Convert.ToInt32(e.GetPosition(View.Canvas).Y)));
+
+            }
+        }
+
+        private void CanvasOnMouseDown(object sender, MouseButtonEventArgs mouseButtonEventArgs)
+        {
+            clicked = true;
         }
 
         private void ButtonSendChatOnClick(object sender, RoutedEventArgs routedEventArgs)

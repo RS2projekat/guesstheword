@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +16,7 @@ namespace Client.Controller
         private Thread ConnectionThread;
         public ClientModel Model { get; set; }
         public LoginView View { get; set; }
+
 
         public LoginController(ClientModel model, Action<Packet> packetCallback)
         {

@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\AsyncObservableCollection.cs" />
     <Compile Include="Model\Connection.cs" />
+    <Compile Include="Model\CustomPoint.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>

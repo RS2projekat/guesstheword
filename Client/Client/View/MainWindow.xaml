@@ -3,7 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Guess the word" Height="768" Width="1024" Background="Aquamarine">
     <Grid>
-
+        
+        <Button HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" x:Name="ButtonClear" Margin="633,491,0,0">
+            <Button Content="Clear" Width="65"/>
+            
+        </Button>
+        <Button Content="Undo" HorizontalAlignment="Left" Margin="528,491,0,0" VerticalAlignment="Top" Width="87" Height="28" x:Name="ButtonUndo"/>
+        <Canvas HorizontalAlignment="Left" Height="449" Margin="46,28,0,0"  Name="Canvas"
+                VerticalAlignment="Top" Width="755" Background="#FF5E5EF1"/>
         <GroupBox  HorizontalAlignment="Left" Margin="46,524,0,0" VerticalAlignment="Top" 
                    Height="169" Width="755" 
                    BorderThickness="2" BorderBrush="Blue" FontWeight="Bold">
