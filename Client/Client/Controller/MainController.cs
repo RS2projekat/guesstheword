@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -21,8 +22,8 @@ namespace Client.Controller
         private AsyncObservableCollection<string> _messages;
 
 
-        private ObservableCollection<CustomPoint> coordinates = new ObservableCollection<CustomPoint>();
-        private bool clicked = false;
+        private ObservableCollection<CustomPoint> CanvasCoordinates = new ObservableCollection<CustomPoint>();
+        private bool clicked;
         private Canvas previousCanvas;
 
         public AsyncObservableCollection<ClientModel> Users
@@ -83,7 +84,82 @@ namespace Client.Controller
                     _messages.Add(core.GetString("nick_name") + ": " + core.GetString("message"));
 
                     break;
+                case Command.SEND_COORDINATES:
+                    ParseCoordinates(core);
+                    break;
+                case Command.CANVAS_CLEAR:
+                        CanvasCoordinates.Clear();
+                    View.Dispatcher.Invoke(() =>
+                    {
+                        View.Canvas.Children.Clear();
+                    });
+                        
+                    break;
+                case Command.CANVAS_UNDO:
+                    View.Dispatcher.Invoke(() =>
+                    {
+                        if (previousCanvas != null)
+                        {
+                            int i = View.Canvas.Children.IndexOf(previousCanvas);
+                            if (i > 0)
+                            {
+                                View.Canvas.Children.RemoveAt(i);
+                                previousCanvas = (Canvas) View.Canvas.Children[i - 1];
+                            }
+                            else if (i == 0)
+                            {
+                                View.Canvas.Children.Clear();
+                                previousCanvas = null;
+                            }
+                        }
+
+                    });
+                    break;
             }
+        }
+
+        private void ParseCoordinates(Packet core)
+        {
+
+
+            XElement coordinates = core.DataNode.Element("coordinates");
+
+            foreach (XElement coordinate in coordinates.Elements())
+            {
+                int x, y;
+                x = Convert.ToInt32(coordinate.Element("x").Value);
+                y = Convert.ToInt32(coordinate.Element("y").Value);
+
+                CanvasCoordinates.Add(new CustomPoint(x,y));
+            }
+
+            View.Dispatcher.Invoke(() =>
+            {
+                DrawLines();
+            });
+
+            CanvasCoordinates.Clear();
+            
+        }
+
+        private void DrawLines()
+        {
+            Canvas obj = new Canvas();
+            for (int i = 0; i < CanvasCoordinates.Count - 3; i += 3)
+            {
+
+                Line line = new Line();
+                line.Stroke = Brushes.Red;
+                line.X1 = CanvasCoordinates[i].X;
+                line.X2 = CanvasCoordinates[i + 3].X;
+                line.Y1 = CanvasCoordinates[i].Y;
+                line.Y2 = CanvasCoordinates[i + 3].Y;
+                line.StrokeThickness = 2;
+                obj.Children.Add(line);
+                previousCanvas = obj;
+            }
+
+            View.Canvas.Children.Add(obj);
         }
 
         private void DoBinding()
@@ -105,48 +181,51 @@ namespace Client.Controller
 
         private void ButtonUndoOnClick(object sender, RoutedEventArgs routedEventArgs)
         {
-            if (previousCanvas != null)
-            {
-                int i = View.Canvas.Children.IndexOf(previousCanvas);
-                if (i > 0)
-                {
-                    View.Canvas.Children.RemoveAt(i);
-                    previousCanvas = (Canvas)View.Canvas.Children[i - 1];
-                }
-                else if (i == 0)
-                {
-                    View.Canvas.Children.Clear();
-                    previousCanvas = null;
-                }
-
-
-            }
+            Packet core = new Packet();
+            core.AddCommand(Command.CANVAS_UNDO);
+            core.AddData("nick_name", Model.NickName);
+            Connection.Send(core);
         }
 
         private void ButtonClearOnClick(object sender, RoutedEventArgs routedEventArgs)
         {
-            coordinates.Clear();
-            View.Canvas.Children.Clear();
+            Packet core = new Packet();
+            core.AddCommand(Command.CANVAS_CLEAR);
+
+            core.AddData("nick_name", Model.NickName);
+            Connection.Send(core);
         }
 
         private void CanvasOnMouseUp(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-            Canvas obj = new Canvas();
-            for (int i = 0; i < coordinates.Count - 5; i += 5)
-            {
+           
+            Connection.Send(CreatePacketFromCoordinates());
 
-                Line line = new Line();
-                line.Stroke = Brushes.Red;
-                line.X1 = coordinates[i].X;
-                line.X2 = coordinates[i + 5].X;
-                line.Y1 = coordinates[i].Y;
-                line.Y2 = coordinates[i + 5].Y;
-                line.StrokeThickness = 2;
-                obj.Children.Add(line);
-                previousCanvas = obj;
+            CanvasCoordinates.Clear();
+        }
+
+        private Packet CreatePacketFromCoordinates()
+        {
+            Packet core = new Packet();
+            core.AddCommand(Command.SEND_COORDINATES);
+            XElement coordinatesNode = core.AddElement("data", "coordinates", string.Empty);
+            int count = 0;
+            foreach (CustomPoint coordinate in CanvasCoordinates)
+            {
+                if (count% 3 != 0)
+                {
+                    count++;
+                    continue;
+                }
+                    
+                XElement coordinateNode = new XElement("coordinate",
+                    new XElement("x", coordinate.X),
+                    new XElement("y", coordinate.Y));
+                coordinatesNode.Add(coordinateNode);
+                count++;
             }
-            View.Canvas.Children.Add(obj);
-            coordinates.Clear();
+
+            return core;
         }
 
         private void CanvasOnMouseMove(object sender, MouseEventArgs e)
@@ -154,7 +233,7 @@ namespace Client.Controller
             if (e.LeftButton == MouseButtonState.Pressed && clicked)
             {
                 // MessageBox.Show(string.Format("Move. Mouse position x: {0} y: {1}", e.GetPosition(this).X, e.GetPosition(this).Y));
-                coordinates.Add(new CustomPoint(Convert.ToInt32(e.GetPosition(View.Canvas).X), Convert.ToInt32(e.GetPosition(View.Canvas).Y)));
+                CanvasCoordinates.Add(new CustomPoint(Convert.ToInt32(e.GetPosition(View.Canvas).X), Convert.ToInt32(e.GetPosition(View.Canvas).Y)));
 
             }
         }

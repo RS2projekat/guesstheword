@@ -23,7 +23,7 @@ namespace Server.Model
         private static Action<Packet, Socket> PackageReceivedCallback;
         private static AsyncObservableCollection<LogMessage> _messageList;
         private int _numberOfPendingClients = 10;
-        private static Byte[] _buffer = new byte[1024];
+        private static Byte[] _buffer = new byte[10000];
 
 
         public bool HasClients()
@@ -120,7 +120,6 @@ namespace Server.Model
                 byte[] dataBuffer = new byte[received];
                 Array.Copy(_buffer, dataBuffer, received);
 
-
                 Packet core = new Packet();
                 string dataBufferStr = ByteToString(dataBuffer);
                 if (String.IsNullOrWhiteSpace(dataBufferStr))
@@ -197,7 +196,6 @@ namespace Server.Model
         public static void SendData(Socket client, Packet core)
         {
             string msg = core.RawXml;
-            msg += "\n";
             byte[] data = StringToByte(msg);
             try
             {

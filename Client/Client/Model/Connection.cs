@@ -16,7 +16,7 @@ namespace Client.Model
         private static Timer _aTimer;
         private static Action ConnectErrorCallback;
         private static Action DisconnectCallback;
-        private static Byte[] _buffer = new byte[1024];
+        private static Byte[] _buffer = new byte[10000];
         private static Action<Packet> PacketReceivedCallback { get; set; }
         public static Socket ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
@@ -120,6 +120,7 @@ namespace Client.Model
                 receivedPacket.XmlDocument = XDocument.Parse(response, LoadOptions.None);
                 PacketReceivedCallback(receivedPacket);
 
+                _buffer = new byte[10000];
 
                 ClientSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None,
                         new AsyncCallback(OnBeginReceive), ClientSocket);
@@ -131,7 +132,6 @@ namespace Client.Model
             }
         }
 
-       
 
         // ---------------------------------------------------------------
         public static void Send(string msg)

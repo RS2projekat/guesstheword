@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Xml.Linq;
 using Server.Model;
 using Server.View;
 
@@ -103,6 +100,15 @@ namespace Server.Controller
                     break;
 
                 case Command.MESSAGE:
+                    Model.Server.SendNotificationToAll(core);
+                    break;
+                case Command.SEND_COORDINATES:
+                    Model.Server.SendNotificationToAll(core);
+                    break;
+                case Command.CANVAS_CLEAR:
+                    Model.Server.SendNotificationToAll(core);
+                    break;
+                case Command.CANVAS_UNDO:
                     Model.Server.SendNotificationToAll(core);
                     break;
             }

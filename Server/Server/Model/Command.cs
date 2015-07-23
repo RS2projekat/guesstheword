@@ -15,9 +15,9 @@ namespace Server.Model
             USER_NICKNAME_IN_USE = 6, // there is already user with that nickname
             UNUSED2 = 7,
             REFRESH_USER_LIST = 8, // indicates that  client needs to refresh user list
-            UNUSED3 = 9, 
-            UNUSED4 = 10,
-            UNUSED5 = 11,
+            SEND_COORDINATES = 9,
+            CANVAS_UNDO = 10,
+            CANVAS_CLEAR = 11,
             UNUSED6 = 12,
             UNUSED7 = 13,
             UNUSED8 = 14,
