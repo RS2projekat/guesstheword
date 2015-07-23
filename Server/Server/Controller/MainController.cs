@@ -101,6 +101,10 @@ namespace Server.Controller
                         RefreshClientsUsersList();
                     }
                     break;
+
+                case Command.MESSAGE:
+                    Model.Server.SendNotificationToAll(core);
+                    break;
             }
         }
 

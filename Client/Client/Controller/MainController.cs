@@ -12,11 +12,18 @@ namespace Client.Controller
     {
         private LoginController _login;
         private AsyncObservableCollection<ClientModel> _users;
+        private AsyncObservableCollection<string> _messages;
 
         public AsyncObservableCollection<ClientModel> Users
         {
             get { return _users; }
             set { _users = value; }
+        }
+
+        public AsyncObservableCollection<string> Messages
+        {
+            get { return _messages; }
+            set { _messages = value; }
         }
         public MainController(MainWindow window)
         {
@@ -24,6 +31,7 @@ namespace Client.Controller
             View.Show();
 
             Users = new AsyncObservableCollection<ClientModel>();
+            Messages = new AsyncObservableCollection<string>();
 
             _login = new LoginController(Model, PacketReceivedCallback);
             var successLogin = _login.View.ShowDialog();
@@ -59,12 +67,18 @@ namespace Client.Controller
 
 
                     break;
+
+                case Command.MESSAGE:
+                    _messages.Add(core.GetString("nick_name") + ": " + core.GetString("message"));
+
+                    break;
             }
         }
 
         private void DoBinding()
         {
             View.UsersList.ItemsSource = Users;
+            View.Messages.ItemsSource = Messages;
         }
 
         private void AttachEvents()
@@ -80,10 +94,13 @@ namespace Client.Controller
             if (string.IsNullOrWhiteSpace(message))
                 return;
 
-            Connection.Send(message);
+            Packet core = new Packet();
+            core.AddCommand(Command.MESSAGE);
+            core.AddData("nick_name", Model.NickName);
+            core.AddData("message", message);
 
-
-
+            Connection.Send(core);
+            View.TextBoxChat.Document.Blocks.Clear();
         }
 
         private void ViewOnClosing(object sender, CancelEventArgs cancelEventArgs)

@@ -10,10 +10,10 @@
             <GroupBox.Header>
                 Chat
             </GroupBox.Header>
-            <StackPanel Margin="0,-1,0,1">
-                <Button Margin="836,195,10,0"  
-            		 Content="Send" Height="26"/>
-
+            <StackPanel Margin="0,0,0,1">
+                <ListBox x:Name="Messages" Margin="0,0,0,0"
+                      Height="148"
+                     />
             </StackPanel>
         </GroupBox>
         <RichTextBox x:Name="TextBoxChat" HorizontalAlignment="Left" Height="30" Margin="46,698,0,0" VerticalAlignment="Top" Width="675" BorderBrush="Blue" BorderThickness="2">
