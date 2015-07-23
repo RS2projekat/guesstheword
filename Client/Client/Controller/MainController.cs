@@ -175,8 +175,14 @@ namespace Client.Controller
             View.Canvas.MouseDown += CanvasOnMouseDown;
             View.Canvas.MouseMove += CanvasOnMouseMove;
             View.Canvas.MouseUp += CanvasOnMouseUp;
+            View.Canvas.MouseLeave += CanvasOnMouseLeave;
             View.ButtonClear.Click += ButtonClearOnClick;
             View.ButtonUndo.Click += ButtonUndoOnClick;
+        }
+
+        private void CanvasOnMouseLeave(object sender, MouseEventArgs mouseEventArgs)
+        {
+           CanvasOnMouseUp(null, null);
         }
 
         private void ButtonUndoOnClick(object sender, RoutedEventArgs routedEventArgs)
@@ -209,20 +215,12 @@ namespace Client.Controller
             Packet core = new Packet();
             core.AddCommand(Command.SEND_COORDINATES);
             XElement coordinatesNode = core.AddElement("data", "coordinates", string.Empty);
-            int count = 0;
             foreach (CustomPoint coordinate in CanvasCoordinates)
-            {
-                if (count% 3 != 0)
-                {
-                    count++;
-                    continue;
-                }
-                    
+            {    
                 XElement coordinateNode = new XElement("coordinate",
                     new XElement("x", coordinate.X),
                     new XElement("y", coordinate.Y));
                 coordinatesNode.Add(coordinateNode);
-                count++;
             }
 
             return core;

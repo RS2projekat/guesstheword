@@ -66,10 +66,11 @@ namespace Client.Model
                 ClientSocket.BeginConnect(remoteEP, OnBeginConnect, ClientSocket);
 
                 PacketReceivedCallback = packetCallback;
-                successCallback();
+                
                 _aTimer = new Timer(500);
                 _aTimer.Enabled = true;
                 _aTimer.Elapsed += OnTimedCheckConnection;
+                successCallback();
 
             }
 
@@ -94,7 +95,7 @@ namespace Client.Model
                 {
                     ClientSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, OnBeginReceive, ClientSocket);
                 }
-
+                
 
                 Socket client = (Socket)ar.AsyncState;
                 client.EndConnect(ar);
@@ -112,11 +113,11 @@ namespace Client.Model
             try
             {
                 Socket client = (Socket)result.AsyncState;
-
                 int bytesRead = client.EndReceive(result);
-               
-                Packet receivedPacket = new Packet();
                 string response = ByteToString(_buffer);
+
+                Packet receivedPacket = new Packet();
+                
                 receivedPacket.XmlDocument = XDocument.Parse(response, LoadOptions.None);
                 PacketReceivedCallback(receivedPacket);
 
