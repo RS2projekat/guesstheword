@@ -1,0 +1,31 @@
+﻿.roomContent{
+    background-color:red;
+    position:relative;
+    width:80vw;
+    height:80vh;
+}
+.roomCanvas{
+    background-color:#bbcccc;
+    float:left;
+    width:50vw;/*Viewport Width*/
+    height:60vh;
+}
+.roomTimer {
+    background-color:#927f92;
+    float:right;
+    width:30vw;
+    height:30vh;
+}
+.roomGuesses{
+    background-color:#347d7b;
+    float:right;
+    width:30vw;
+    height:30vh;
+}
+.roomChat{
+    background-color:#7fc7af;
+    position: absolute;
+    bottom:0px;
+    width:80vw;
+    height:20vh;
+}

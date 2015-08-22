@@ -1,0 +1,17 @@
+﻿<div class="roomContent">
+    <div class="roomCanvas">Canvas</div>
+    <div class="roomTimer">Timer</div>
+    <div class="roomGuesses">Guess</div>
+    <div class="roomChat">
+        <h1>Simple chat</h1>
+        <label>Your message</label>
+        <input type="text" class="form-control" id="focusedInput" ng-model="chatMessage" />
+        <button ng-click="sendChatMessage()">SAY</button>
+        <div ng-repeat="item in chatMessages" id="chatMessages">
+            <p>
+                <span>{{item.created | date:'shortTime'}}</span>
+                <span><em>{{item.message}}</em></span>
+            </p>
+        </div>
+    </div>
+</div>
