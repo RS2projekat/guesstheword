@@ -7,17 +7,17 @@ using XSockets.Core.XSocket.Helpers;
 using XSockets.Core.Common.Socket.Event.Interface;
 using XSockets.Plugin.Framework.Attributes;
 using GTW_Server.Models;
+using GTW_Server.Services;
 
 namespace GTW_Server.Controllers
 {
     [XSocketMetadata("login")]
     public class LoginController : XSocketController
     {
-        /// <param name="signin"></param>
         public void SignIn(LoginUserModel user)
         {
-            if (user.Username.Equals("admin") && user.Password.Equals("admin"))
-            {
+            if (UserService.checkIfUserExists(user) == true)
+            { 
                 this.Invoke(user.Username, "loggedin");
             }
             else
@@ -26,13 +26,25 @@ namespace GTW_Server.Controllers
             }
         }
 
-        /// <param name="signup"></param>
         public void SignUp(LoginUserModel user)
         {
-            if (user.Password.Equals(user.ConfirmPassword) == false)
-                this.Invoke("noequalpass");
-            else
+            if (UserService.addUser(user) == true)
                 this.Invoke("signedup");
+            else
+                this.Invoke("nosignedup");
+        }
+
+
+        public override void OnOpened()
+        {
+        }
+
+        public override void OnClosed()
+        {
+        }
+
+        public override void OnReopened()
+        {
         }
     }
 }

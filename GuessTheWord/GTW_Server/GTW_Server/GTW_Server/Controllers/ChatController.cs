@@ -6,6 +6,8 @@ using XSockets.Core.XSocket;
 using XSockets.Core.XSocket.Helpers;
 using XSockets.Core.Common.Socket.Event.Interface;
 using XSockets.Plugin.Framework.Attributes;
+using GTW_Server.Services;
+using GTW_Server.Models;
 
 namespace GTW_Server.Controllers
 {
@@ -17,25 +19,21 @@ namespace GTW_Server.Controllers
         /// connected to this controller.
         /// To use Pub/Sub replace InvokeToAll with PublishToAll
         /// </summary>
-        /// <param name="message"></param>
         public void ChatMessage(IMessage message)
         {
-            this.InvokeToAll(message);
+                  this.InvokeToAll(message);
         }
 
         public override void OnOpened()
         {
-            Console.WriteLine("otvoren");
         }
 
         public override void OnClosed()
         {
-            Console.WriteLine("zatvoren");
         }
 
         public override void OnReopened()
         {
-            Console.WriteLine("ponovo otvoren");    
         }
     }
 }
