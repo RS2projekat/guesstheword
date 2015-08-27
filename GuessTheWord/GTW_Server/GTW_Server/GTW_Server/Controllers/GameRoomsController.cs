@@ -14,7 +14,6 @@ namespace GTW_Server.Controllers
     {
         [HttpGet]
         [Route("GTW/GameRooms/")]
-
         public IEnumerable<GameRoom> GetRooms()
         {
             try
@@ -90,7 +89,6 @@ namespace GTW_Server.Controllers
 
         [HttpPost]
         [Route("GTW/GameRooms/{idr}/Users/")]
-
         public IHttpActionResult addUsers(int idr, ICollection<User> users)
         {
             try
