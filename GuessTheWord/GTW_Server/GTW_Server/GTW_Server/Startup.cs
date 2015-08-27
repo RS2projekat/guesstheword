@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using GTW_Server;
 using Microsoft.Owin;
 using Owin;
 using XSockets.Owin.Host;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.Owin;
 using GTW_Server.DAL;
+using GTW_Server;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -19,8 +20,20 @@ namespace GTW_Server
         {
             // Initialize sockets
             appBuilder.UseXSockets();
+            
+          //  appBuilder.CreatePerOwinContext<ServerContext>(InvokeServerContext);
+         //   appBuilder.CreatePerOwinContext<ServiceContainer>(InvokeServiceContainer);
 
         }
 
+        //public ServerContext InvokeServerContext()
+        //{
+        //    return ServerContext.Instance;
+        //}
+
+        //public ServiceContainer InvokeServiceContainer()
+        //{
+        //    return ServiceContainer.Instance;
+        //}
     }
 }

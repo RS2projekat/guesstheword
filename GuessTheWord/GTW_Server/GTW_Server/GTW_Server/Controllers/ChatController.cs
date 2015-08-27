@@ -6,8 +6,12 @@ using XSockets.Core.XSocket;
 using XSockets.Core.XSocket.Helpers;
 using XSockets.Core.Common.Socket.Event.Interface;
 using XSockets.Plugin.Framework.Attributes;
+using Microsoft.Owin;
+using Owin;
+using XSockets.Owin.Host;
+using Microsoft.AspNet.Identity.Owin;
 using GTW_Server.Services;
-using GTW_Server.Models;
+using Microsoft.Owin.Host.SystemWeb;
 
 namespace GTW_Server.Controllers
 {
@@ -21,7 +25,8 @@ namespace GTW_Server.Controllers
         /// </summary>
         public void ChatMessage(IMessage message)
         {
-                  this.InvokeToAll(message);
+            ServerContext.Instance.proba = message.ToString().Count();
+            this.InvokeToAll(message);
         }
 
         public override void OnOpened()

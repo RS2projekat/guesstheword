@@ -6,19 +6,26 @@ using XSockets.Core.XSocket;
 using XSockets.Core.XSocket.Helpers;
 using XSockets.Core.Common.Socket.Event.Interface;
 using XSockets.Plugin.Framework.Attributes;
-using GTW_Server.Models;
+using Microsoft.Owin;
+using Owin;
+using XSockets.Owin.Host;
+using Microsoft.AspNet.Identity.Owin;
 using GTW_Server.Services;
+using GTW_Server.DAL;
+using GTW_Server.DAL.Models;
 
 namespace GTW_Server.Controllers
 {
     [XSocketMetadata("login")]
     public class LoginController : XSocketController
     {
-        public void SignIn(LoginUserModel user)
+        public void SignIn(User user)
         {
-            if (UserService.checkIfUserExists(user) == true)
+            User u = HttpContext.Current.GetOwinContext().Get<ServiceContainer>().databaseServices.getUser(user);
+           
+            if(u != null)
             { 
-                this.Invoke(user.Username, "loggedin");
+                this.Invoke(u, "loggedin");
             }
             else
             {
@@ -26,10 +33,12 @@ namespace GTW_Server.Controllers
             }
         }
 
-        public void SignUp(LoginUserModel user)
+        public void SignUp(User user)
         {
-            if (UserService.addUser(user) == true)
-                this.Invoke("signedup");
+            User u = HttpContext.Current.GetOwinContext().Get<ServiceContainer>().databaseServices.getUser(user);
+            
+            if (u != null)
+                this.Invoke(u, "signedup");
             else
                 this.Invoke("nosignedup");
         }

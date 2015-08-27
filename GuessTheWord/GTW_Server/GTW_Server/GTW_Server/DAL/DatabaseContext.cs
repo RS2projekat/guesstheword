@@ -14,5 +14,6 @@ namespace GTW_Server.DAL
         { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<GameRoom> GameRooms { get; set; }
     }
 }

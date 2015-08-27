@@ -7,8 +7,11 @@ using XSockets.Core.XSocket;
 using XSockets.Core.XSocket.Helpers;
 using XSockets.Plugin.Framework;
 using XSockets.Plugin.Framework.Attributes;
+using Microsoft.Owin;
+using Owin;
+using XSockets.Owin.Host;
+using Microsoft.AspNet.Identity.Owin;
 using GTW_Server;
-
 
 namespace GTW_Server.Controllers
 {
@@ -29,7 +32,9 @@ namespace GTW_Server.Controllers
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             //Sending a message to all clients on the Chat controller
-            this.InvokeToAll<ChatController>("Udje u ovaj drndavi kontroler");
+            this.InvokeToAll<ChatController>("Udje u ovaj drndavi kontroler", "tick");
+            var x = ServerContext.Instance.proba;
+
         }
     }
  }
