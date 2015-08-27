@@ -11,8 +11,8 @@ namespace GTW_Server.DAL.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public string Word { get; set; }
-        public virtual User Winner { get; set; }
-        public virtual ICollection<User> Users { get; set; }
+        public int WinnerId { get; set; }
+        public ICollection<User> Users { get; set; }
             
     }
 }

@@ -58,6 +58,9 @@
     <Reference Include="Microsoft.Owin.Cors">
       <HintPath>..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.2.0.2\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
@@ -90,6 +93,11 @@
       <HintPath>..\packages\Serilog.1.4.168\lib\net45\Serilog.FullNetFx.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Cors">
@@ -104,6 +112,13 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -174,9 +189,25 @@
     <Content Include="XSocketsNET\ServerExample\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ChatController.cs" />
-    <Compile Include="Controllers\GlobalController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\GameRoomsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Migrations\201508271353385_5Migration.cs" />
+    <Compile Include="Migrations\201508271353385_5Migration.Designer.cs">
+      <DependentUpon>201508271353385_5Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508271638582_6Migration.cs" />
+    <Compile Include="Migrations\201508271638582_6Migration.Designer.cs">
+      <DependentUpon>201508271638582_6Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508271716013_7Migration.cs" />
+    <Compile Include="Migrations\201508271716013_7Migration.Designer.cs">
+      <DependentUpon>201508271716013_7Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\RoomServices.cs" />
+    <Compile Include="Services\UserServices.cs" />
+    <Compile Include="XSocketControllers\ChatController.cs" />
+    <Compile Include="XSocketControllers\GlobalController.cs" />
+    <Compile Include="XSocketControllers\LoginController.cs" />
     <Compile Include="DAL\Models\GameRoom.cs" />
     <Compile Include="DAL\Models\User.cs" />
     <Compile Include="DAL\DatabaseContext.cs" />
@@ -188,15 +219,9 @@
     <Compile Include="Migrations\201508231247404_SecondMigration.Designer.cs">
       <DependentUpon>201508231247404_SecondMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508251845337_ThirdMigration.cs" />
-    <Compile Include="Migrations\201508251845337_ThirdMigration.Designer.cs">
-      <DependentUpon>201508251845337_ThirdMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerContext.cs" />
-    <Compile Include="ServiceContainer.cs" />
-    <Compile Include="Services\DatabaseServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -209,8 +234,14 @@
     <EmbeddedResource Include="Migrations\201508231247404_SecondMigration.resx">
       <DependentUpon>201508231247404_SecondMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508251845337_ThirdMigration.resx">
-      <DependentUpon>201508251845337_ThirdMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508271353385_5Migration.resx">
+      <DependentUpon>201508271353385_5Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508271638582_6Migration.resx">
+      <DependentUpon>201508271638582_6Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508271716013_7Migration.resx">
+      <DependentUpon>201508271716013_7Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

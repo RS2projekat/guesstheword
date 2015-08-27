@@ -32,9 +32,9 @@ namespace GTW_Server.Migrations
             context.Database.ExecuteSqlCommand("DELETE FROM Users");
             context.Database.ExecuteSqlCommand("DELETE FROM GameRooms");
 
-            GameRoom gr1 = new GameRoom() { Date = DateTime.Now , Name = "probna soba", Word = "probna rec"};
-            User u1 = new User() { Username = "admin", Password = "admin" };
-            User u2 = new User() { Username = "user", Password = "user" };
+            GameRoom gr1 = new GameRoom() { Date = DateTime.Now, Name = "probna soba", Word = "probna rec" };
+            User u1 = new User() { Username = "admin", Password = "admin", Role = "Admin" };
+            User u2 = new User() { Username = "user", Password = "user" , Role = "User"};
 
             context.Users.Add(u2);
             context.Users.Add(u1);

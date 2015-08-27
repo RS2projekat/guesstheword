@@ -7,13 +7,13 @@ namespace GTW_Server.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ThirdMigration : IMigrationMetadata
+    public sealed partial class _6Migration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ThirdMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_6Migration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201508251845337_ThirdMigration"; }
+            get { return "201508271638582_6Migration"; }
         }
         
         string IMigrationMetadata.Source

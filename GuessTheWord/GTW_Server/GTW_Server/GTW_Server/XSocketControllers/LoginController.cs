@@ -11,23 +11,24 @@ using Owin;
 using XSockets.Owin.Host;
 using Microsoft.AspNet.Identity.Owin;
 using GTW_Server.Services;
-using Microsoft.Owin.Host.SystemWeb;
+using GTW_Server.DAL;
+using GTW_Server.DAL.Models;
 
-namespace GTW_Server.Controllers
+namespace GTW_Server.XSocketControllers
 {
-    [XSocketMetadata("chat")]
-    public class ChatController : XSocketController
+    [XSocketMetadata("login")]
+    public class LoginController : XSocketController
     {
-        /// <summary>
-        /// This will broadcast any message to all clients
-        /// connected to this controller.
-        /// To use Pub/Sub replace InvokeToAll with PublishToAll
-        /// </summary>
-        public void ChatMessage(IMessage message)
+        public void SignIn(User user)
         {
-            ServerContext.Instance.proba = message.ToString().Count();
-            this.InvokeToAll(message);
+          
         }
+
+        public void SignUp(User user)
+        {
+           
+        }
+
 
         public override void OnOpened()
         {

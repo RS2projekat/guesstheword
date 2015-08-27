@@ -10,6 +10,6 @@ namespace GTW_Server.DAL.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public virtual ICollection<GameRoom> Rooms { get; set; }
+        public string Role { get; set; }
     }
 }

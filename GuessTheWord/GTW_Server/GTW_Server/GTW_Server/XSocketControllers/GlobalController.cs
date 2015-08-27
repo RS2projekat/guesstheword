@@ -13,7 +13,7 @@ using XSockets.Owin.Host;
 using Microsoft.AspNet.Identity.Owin;
 using GTW_Server;
 
-namespace GTW_Server.Controllers
+namespace GTW_Server.XSocketControllers
 {
 
     [XSocketMetadata("GlobalController", PluginRange.Internal)]
