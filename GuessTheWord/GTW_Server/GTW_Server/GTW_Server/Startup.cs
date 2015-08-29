@@ -11,6 +11,7 @@ using GTW_Server.DAL;
 using GTW_Server;
 using System.Web.Http;
 using Newtonsoft.Json;
+using GTW_Server.App_Start;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -20,18 +21,11 @@ namespace GTW_Server
     {
         public void Configuration(IAppBuilder appBuilder)
         {
-            // Configure Web API for self-host. 
             HttpConfiguration config = new HttpConfiguration();
-            
-            config.MapHttpAttributeRoutes();
 
+            appBuilder.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "GTW/{controller}/{id}/",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
+            WebApiConfig.Register(config);
 
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
