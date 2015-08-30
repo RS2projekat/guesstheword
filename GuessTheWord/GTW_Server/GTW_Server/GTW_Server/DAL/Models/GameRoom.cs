@@ -12,6 +12,7 @@ namespace GTW_Server.DAL.Models
         public DateTime Date { get; set; }
         public string Word { get; set; }
         public int WinnerId { get; set; }
+        public int PainterId { get; set; }
         public ICollection<User> Users { get; set; }
             
     }

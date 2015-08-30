@@ -195,6 +195,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GameRoomsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Migrations\201508271353385_5Migration.cs" />
     <Compile Include="Migrations\201508271353385_5Migration.Designer.cs">
@@ -211,8 +212,8 @@
     <Compile Include="Services\RoomServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="XSocketControllers\ChatController.cs" />
+    <Compile Include="XSocketControllers\GameRoomInactiveController.cs" />
     <Compile Include="XSocketControllers\GlobalController.cs" />
-    <Compile Include="XSocketControllers\LoginController.cs" />
     <Compile Include="DAL\Models\GameRoom.cs" />
     <Compile Include="DAL\Models\User.cs" />
     <Compile Include="DAL\DatabaseContext.cs" />

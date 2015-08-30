@@ -148,8 +148,25 @@ namespace GTW_Server.Services
             {
                 try
                 {
+                    List<GameRoom> gamerooms = new List<GameRoom>();
+
+                    var rooms = (from r in db.GameRooms
+                                 select r).Include("Users").ToList();
+
+                    foreach(var room in rooms)
+                    {
+
+                        foreach(var user in room.Users.ToList())
+                        {
+                            if (user.Id == idUser)
+                            {
+                                gamerooms.Add(room);
+                                break;
+                            }
+                        }
+                    }
                     // TODO: Return rooms for one user
-                    return null;
+                    return gamerooms;
 
                 }
                 catch (Exception e)
