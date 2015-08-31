@@ -28,6 +28,7 @@
             postJSON.postJSON("http://localhost:43474/GTW/Users/Login", $scope.user).then(function (result) {
                 console.log(result.data);
 
+
                 if (result.data != {}) {
                     console.log("Uspesno ulogovan korisnik");
 

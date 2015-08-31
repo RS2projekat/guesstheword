@@ -129,6 +129,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JS\angular-route.min.js" />
+    <Content Include="JS\angular.min.js" />
+    <Content Include="JS\Controllers\ControllerExample.js" />
+    <Content Include="JS\Controllers\GameController.js" />
+    <Content Include="JS\Service\getUser.js" />
+    <Content Include="JS\Service\postJSON.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
