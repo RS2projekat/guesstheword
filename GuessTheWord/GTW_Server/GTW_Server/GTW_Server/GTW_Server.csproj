@@ -209,9 +209,14 @@
     <Compile Include="Migrations\201508271716013_7Migration.Designer.cs">
       <DependentUpon>201508271716013_7Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508310920258_8Migration.cs" />
+    <Compile Include="Migrations\201508310920258_8Migration.Designer.cs">
+      <DependentUpon>201508310920258_8Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\RoomServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="XSocketControllers\ChatController.cs" />
+    <Compile Include="XSocketControllers\GameRoomActiveController.cs" />
     <Compile Include="XSocketControllers\GameRoomInactiveController.cs" />
     <Compile Include="XSocketControllers\GlobalController.cs" />
     <Compile Include="DAL\Models\GameRoom.cs" />
@@ -248,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508271716013_7Migration.resx">
       <DependentUpon>201508271716013_7Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508310920258_8Migration.resx">
+      <DependentUpon>201508310920258_8Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

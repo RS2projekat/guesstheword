@@ -15,10 +15,6 @@ namespace GTW_Server
         public Random idGenerator { get; set; }
         public int proba { get; set; }
 
-        public List<GameRoom> listInactiveRooms()
-        {
-            return inactiveRooms;
-        }
         public bool addNewRoom(string name, User user) 
         {
             try

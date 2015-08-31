@@ -33,7 +33,12 @@ namespace GTW_Server.XSocketControllers
         {
             //Sending a message to all clients on the Chat controller
             this.InvokeToAll<ChatController>("Udje u ovaj drndavi kontroler", "tick");
-            var x = ServerContext.Instance.proba;
+            test();
+
+        }
+
+        void test()
+        {
 
         }
     }

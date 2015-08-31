@@ -16,9 +16,9 @@ namespace GTW_Server.Controllers
         public void Test()
         {
             ServerContext.Instance.addNewRoom("neka soba", new User() {Id = 19, Username = "pera" });
-            var x = ServerContext.Instance.listInactiveRooms().First();
+            var x = ServerContext.Instance.inactiveRooms.First();
             ServerContext.Instance.addNewPlayer(new User() { Id = 23, Username = "pera2" }, x);
-            var y = ServerContext.Instance.listInactiveRooms();
+            var y = ServerContext.Instance.inactiveRooms;
             ServerContext.Instance.activateRoom(x.Id);
             Console.WriteLine(x);
         }

@@ -78,7 +78,7 @@ namespace GTW_Server.Services
                     else
                     {
                         User u = new User() { Username = user.Username, Password = user.Password, Role = "User" };
-                        db.Users.Add(user);
+                        db.Users.Add(u);
 
                         db.SaveChanges();
 

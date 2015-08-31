@@ -75,3 +75,4 @@ C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\Guess
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\bin\XSockets.Server.xml
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.dll
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.pdb
+C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations._8Migration.resources
