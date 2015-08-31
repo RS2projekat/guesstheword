@@ -1,23 +1,27 @@
-﻿<div >
+﻿<!--U kontroleru se html elementima ne pristupa preko DOMa nego preko modela-->
+<div ng-controller="LoginController">
     <form class="form-horizontal">
         <fieldset>
             <legend>Login</legend>
             <div class="form-group">
                 <label for="inputUsername" class="col-lg-2 control-label">Username</label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                    <!--Sa ng-model postavimo model. To je neka promenjiva iz kontrolera koja je tamo definisana sa $scope.imePromenjive
+                        i tada bismo ovde pisali ng-model="imePromenjive"-->
+                    <input type="text" ng-model="user.Username" class="form-control" id="inputUsername" placeholder="Username">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                 <div class="col-lg-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <input type="password" ng-model="user.Password" class="form-control" id="inputPassword" placeholder="Password">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <!--Ako hocemo da definisemo funkciju kada se klinke na dugme, sve je isto samo sto umesto click="funkcija" pisemo ng-click="funkcija"-->
+                    <button type="submit" ng-click="sendUser()" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </fieldset>

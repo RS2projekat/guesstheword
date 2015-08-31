@@ -29,3 +29,83 @@
     width:80vw;
     height:20vh;
 }
+
+
+/*TIMER*/
+.square {
+  position: absolute;
+  width: 30vw;
+  height: 30vh;
+}
+svg {
+  width: 30vw;
+  height: 30vh;
+}
+
+/*CANVAS*/
+#mainCanvas {
+    border: 2px #c3c3c3 solid;
+    float: right;
+    width:40vw;
+    height:60vh;
+    background-color:white;
+}
+/*Alati*/
+.canvasTools{
+    float:left;
+    width:10vw;
+}
+#green{
+    width:10px;
+    height:10px;
+    background:green;
+}
+#orange{
+    width:10px;
+    height:10px;
+    background:orange;
+}
+#blue{
+    width:10px;
+    height:10px;
+    background:blue;
+}
+#yellow{
+    width:10px;
+    height:10px;
+    background:yellow;
+}
+#red{
+    width:10px;
+    height:10px;
+    background:red;
+}
+#black{
+    width:10px;
+    height:10px;
+    background:black;
+}
+#white{
+    width:15px;
+    height:15px;
+    background:white;
+    border:2px solid;
+}
+#line{
+    width:15px;
+    height:15px;
+    background:white;
+    border:2px solid;
+}
+#pencil{
+    width:15px;
+    height:15px;
+    background:red;
+    border:2px solid;
+}
+#rect{
+    width:15px;
+    height:15px;
+    background:red;
+    border:2px solid;
+}

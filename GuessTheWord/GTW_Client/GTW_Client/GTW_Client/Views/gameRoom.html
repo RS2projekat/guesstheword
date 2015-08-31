@@ -1,12 +1,48 @@
 ﻿<div class="roomContent">
-    <div class="roomCanvas">Canvas</div>
-    <div class="roomTimer">Timer</div>
+    <div ng-controller="GameController">
+        <div class="roomCanvas">
+            <div class="canvasTools">
+
+                Choose color
+                <div id="green" ng-click="color('green')"></div>
+                <div id="blue" ng-click="color('blue')"></div>
+                <div id="red" ng-click="color('red')"></div>
+                <div id="yellow" ng-click="color('yellow')"></div>
+                <div id="orange" ng-click="color('orange')"></div>
+                <div id="black" ng-click="color('black')"></div>
+                Eraser
+                <div id="white" ng-click="color('white')"></div>
+                Drawing style
+                <div id="pencil" ng-click="drawingStyle('pencil')"></div>Pencil
+                <div id="line" ng-click="drawingStyle('line')"></div>Line
+                <div id="rect" ng-click="drawingStyle('rect')"></div>Rectangle
+                <br />
+                <br />
+                <button ng-click="startGame()" ng-disabled="isDisabled" class="btn btn-primary">START</button>
+
+            </div>
+
+            <canvas id="mainCanvas" ng-model="scale" width="{{scale.w}}" height="{{scale.h}}" ng-mousedown="setFlag($event)" ng-mousemove="mouseMove($event)" ng-mouseleave="removeFlag()" ng-mouseup="mouseUp($event)"></canvas>
+        </div>
+        <div class="roomTimer">
+            
+            <div class="square">
+                <svg>
+                    <circle cx="120" cy="120" r="100" stroke="green" stroke-width="4" fill="yellow" />
+                    <line ng-model="angle" x1="120" y1="120" x2="120" y2="20" style="stroke:rgb(255,0,0); stroke-width:2;" transform="rotate({{angle}} 120 120)" />
+
+                </svg>
+
+            </div>
+
+        </div>
+    </div>
     <div class="roomGuesses">Guess</div>
-    <div class="roomChat">
+    <div class="roomChat" ng-controller="ChatController">
         <h1>Simple chat</h1>
         <label>Your message</label>
         <input type="text" class="form-control" id="focusedInput" ng-model="chatMessage" />
-        <button ng-click="sendChatMessage()">SAY</button>
+        <button ng-click="sendChatMessage()" class="btn btn-primary">SAY</button>
         <div ng-repeat="item in chatMessages" id="chatMessages">
             <p>
                 <span>{{item.created | date:'shortTime'}}</span>

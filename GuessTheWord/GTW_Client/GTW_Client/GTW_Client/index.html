@@ -21,18 +21,25 @@
         </div>
     </div>
 
+    <!--Kada se otvara nova stranica u divu "page-header" ce se ucitati neki od html fajlova iz foldera View
+        Koji ce se ucitati podesavamo na 2 mesta:
+            1. napravimo link sa putanjom "#/imePogleda (kao u redu 17^ )
+            2. u app.js postavimo putanju za taj link"-->
     <div class="container">
         <div class="page-header" ng-view>
             
         </div>
     </div>
 
-
     <script src="//rawgit.com/XSockets/XSockets.Clients/master/src/XSockets.Clients/XSockets.JavaScript/XSockets.latest.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+    <script src="JS/angular.min.js"></script>
+    <script src="JS/angular-route.min.js"></script>
     <script src="JS/app.js"></script>
     <script src="JS/Controllers/ChatController.js"></script>
+    <script src="JS/Controllers/LoginController.js"></script>
+    <script src="JS/Controllers/RegisterController.js"></script>
+    <script src="JS/Controllers/GameController.js"></script>
+    <script src="JS/Service/postJSON.js"></script>
     <script src="//rawgit.com/XSockets/XSockets.Clients/master/src/XSockets.Clients/XSockets.angularJS/src/xsocketsProvider.min.js"></script>
 
 </body>
