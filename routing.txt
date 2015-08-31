@@ -1,0 +1,54 @@
+Rutiranje:
+
+Ovo je za sobe
+
+Soba je objekat GameRoom{ Id, Name, Date, Word, Winner, Users[]}
+
+GET : http://localhost:43474/GTW/GameRooms/
+- lista sve sobe
+
+GET : http://localhost:43474/GTW/GameRooms/{Id}
+- vraca sobu sa tim Id
+
+POST: http://localhost:43474/GTW/GameRooms/
+        saljes JSON { Name, Date, Word}
+- dodaje novu sobu
+
+POST: http://localhost:43474/GTW/GameRooms/{Id}/Winner
+         saljes JSON {Id}
+- dodaje pobednika
+
+POST: http://localhost:43474/GTW/GameRooms/{Id}/Users
+        saljes JSON [ {Id} ]
+- dodaje Usere koji su u sobi
+
+GET: http://localhost:43474/GTW/GameRooms/{Id}/Users
+- lista Usere koji su u sobi
+
+Ovo je za Korisnika:
+
+Korisnik je objekat User { Id, Username, Password, Role}
+
+GET : http://localhost:43474/GTW/Users/
+- lista sve Usere
+
+POST: http://localhost:43474/GTW/Users/Login
+       saljes JSON { Username, Password}
+- dodaje korisnika
+
+GET: http://localhost:43474/GTW/Users/{Id}/Role
+-  vraca rolu
+
+POST: http://localhost:43474/GTW/Users/{Id}/Role
+        saljes JSON { Id, Admin/User}
+-  menja rolu
+
+GET: http://localhost:43474/GTW/Users/Id/GameRooms
+- vraca sobe u kojima je bio taj korisnik
+
+POST: http://localhost:43474/GTW/Users/Register
+       saljes JSON { Username, Password}
+- registrujes Usera
+
+DELETE: http://localhost:43474/GTW/Users/{Id}
+- brise Usera
