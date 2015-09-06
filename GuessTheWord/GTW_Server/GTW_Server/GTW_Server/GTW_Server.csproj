@@ -197,6 +197,8 @@
     <Compile Include="Controllers\GameRoomsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="DAL\Models\OverallScore.cs" />
+    <Compile Include="DAL\Models\WeeklyScore.cs" />
     <Compile Include="Migrations\201508271353385_5Migration.cs" />
     <Compile Include="Migrations\201508271353385_5Migration.Designer.cs">
       <DependentUpon>201508271353385_5Migration.cs</DependentUpon>
@@ -213,8 +215,10 @@
     <Compile Include="Migrations\201508310920258_8Migration.Designer.cs">
       <DependentUpon>201508310920258_8Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\OverallScoreServices.cs" />
     <Compile Include="Services\RoomServices.cs" />
     <Compile Include="Services\UserServices.cs" />
+    <Compile Include="Services\WeeklyScoreServices.cs" />
     <Compile Include="XSocketControllers\ChatController.cs" />
     <Compile Include="XSocketControllers\GameRoomActiveController.cs" />
     <Compile Include="XSocketControllers\GameRoomInactiveController.cs" />

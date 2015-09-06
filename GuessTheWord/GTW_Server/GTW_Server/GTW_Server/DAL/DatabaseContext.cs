@@ -10,10 +10,12 @@ namespace GTW_Server.DAL
     public class DatabaseContext : DbContext
     {
         public DatabaseContext()
-            : base("DatabaseContext") 
+            : base("DatabaseContext")
         { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<GameRoom> GameRooms { get; set; }
+        public DbSet<WeeklyScore> WeeklyScore { get; set; }
+        public DbSet<OverallScore> OverallScore { get; set; }
     }
 }
