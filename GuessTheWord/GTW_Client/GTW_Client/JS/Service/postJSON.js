@@ -9,7 +9,7 @@
 
             return result;
 
-        })
+        });
     };
 
     sending.postJSON = _postJSON;
