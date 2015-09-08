@@ -43,12 +43,27 @@ svg {
 }
 
 /*CANVAS*/
-#mainCanvas {
-    border: 2px #c3c3c3 solid;
+#canvasContainer{
     float: right;
     width:40vw;
     height:60vh;
+    position:relative;
+}
+
+ #imageView{
+    border: 2px #c3c3c3 solid;
+    width:40vw;
+    height:60vh;
     background-color:white;
+    
+ }
+#mainCanvas{
+    border: 2px #c3c3c3 solid;
+    width:40vw;
+    height:60vh;
+    background-color:transparent;
+    position:absolute;
+    top: 0; right: 0;
 }
 /*Alati*/
 .canvasTools{
@@ -104,6 +119,12 @@ svg {
     border:2px solid;
 }
 #rect{
+    width:15px;
+    height:15px;
+    background:red;
+    border:2px solid;
+}
+#circle{
     width:15px;
     height:15px;
     background:red;
