@@ -7,3 +7,12 @@
 /Server/GTWServer solution.suo
 /Server/GTWServer solution.v12.suo
 /Client/*.suo
+*.dll
+*.suo
+*.cache
+GuessTheWord/GTW_Client/GTW_Client/obj/Debug/GTW_Client.csproj.FileListAbsolute.txt
+GuessTheWord/GTW_Server/GTW_Server/GTW_Server/bin/GTW_Server.pdb
+*.pdb
+*.Cache
+*.dll
+GuessTheWord/GTW_Server/GTW_Server/GTW_Server.v12.suo

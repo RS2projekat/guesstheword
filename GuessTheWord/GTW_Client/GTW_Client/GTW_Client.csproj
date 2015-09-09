@@ -129,6 +129,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="jscolor\arrow.gif" />
+    <Content Include="jscolor\cross.gif" />
+    <Content Include="jscolor\hs.png" />
+    <Content Include="jscolor\hv.png" />
+    <Content Include="jscolor\jscolor.js" />
     <Content Include="JS\angular-route.min.js" />
     <Content Include="JS\angular.min.js" />
     <Content Include="JS\Controllers\ControllerExample.js" />
@@ -138,6 +143,11 @@
     <Content Include="JS\Service\getUser.js" />
     <Content Include="JS\Service\postJSON.js" />
     <Content Include="packages.config" />
+    <Content Include="Pictures\circle.png" />
+    <Content Include="Pictures\eraser.png" />
+    <Content Include="Pictures\line.png" />
+    <Content Include="Pictures\pen.png" />
+    <Content Include="Pictures\rect.png" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -946,7 +956,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="JS\Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

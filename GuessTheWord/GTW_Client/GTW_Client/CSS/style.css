@@ -1,14 +1,14 @@
 ﻿.roomContent{
     background-color:red;
     position:relative;
-    width:80vw;
-    height:80vh;
+    width:100vw;
+    height:100vh;
 }
 .roomCanvas{
     background-color:#bbcccc;
     float:left;
-    width:50vw;/*Viewport Width*/
-    height:60vh;
+    width:60vw;/*Viewport Width*/
+    height:80vh;
 }
 .roomTimer {
     background-color:#927f92;
@@ -43,17 +43,33 @@ svg {
 }
 
 /*CANVAS*/
-#mainCanvas {
-    border: 2px #c3c3c3 solid;
+#canvasContainer{
     float: right;
     width:40vw;
-    height:60vh;
+    height:100vh;
+    position:relative;
+}
+
+ #imageView{
+    border: 2px #c3c3c3 solid;
+    width:40vw;
+    height:100vh;
     background-color:white;
+    
+ }
+#mainCanvas{
+    border: 2px #c3c3c3 solid;
+    width:40vw;
+    height:100vh;
+    background-color:transparent;
+    position:absolute;
+    top: 0; right: 0;
 }
 /*Alati*/
 .canvasTools{
     float:left;
     width:10vw;
+    height:100vw;
 }
 #green{
     width:10px;
@@ -88,24 +104,37 @@ svg {
 #white{
     width:15px;
     height:15px;
-    background:white;
-    border:2px solid;
+    background-image:url('../Pictures/eraser.png');
+    
 }
 #line{
-    width:15px;
-    height:15px;
-    background:white;
-    border:2px solid;
+    
+    margin: 2px 2px 2px 2px;
+    width:16px;
+    height:17px;
+    background-image:url('../Pictures/line.png');
+   
 }
 #pencil{
+
+    margin: 2px 2px 2px 2px;
     width:15px;
     height:15px;
-    background:red;
-    border:2px solid;
+    background-image:url('../Pictures/pen.png');
+   
 }
 #rect{
+    
+    margin: 2px 2px 2px 2px;
     width:15px;
     height:15px;
-    background:red;
-    border:2px solid;
+    background-image:url('../Pictures/rect.png');
+
+}
+#circle{
+    
+    margin: 2px 2px 2px 2px;
+    width:15px;
+    height:15px;
+    background-image:url('../Pictures/circle.png');
 }
