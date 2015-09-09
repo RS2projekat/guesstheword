@@ -46,7 +46,7 @@
         var pencilFlag = false, rectFlag = false, lineFlag = false, circleFlag = false;
         var started = false;
 
-
+        var historyArray = [];
 
         $scope.mouseDown = function (event) {
             console.log("pocelo da crta");
@@ -156,10 +156,12 @@
                 started = false;
                 $scope.removeFlag();
                 $scope.img_update();
+                historyArray.push(contexto);
             }
 
         };
 
+        
         //postavljlanje boje
         $scope.color = function (color) {
             $scope.canvasModel.color = color;
@@ -220,10 +222,30 @@
             }
         };
 
+        //ULAZI U UNDO, SADA CU TO SMISLITI KAKO DA URADIM
+        $scope.undo = function () {
+            console.log("USLO U UNDO");
+          /*  var canv1 = historyArray.pop();
+            var canv2 = historyArray.pop();
+            if (canv2 != null) {
+                contexto.drawImage(canv2, 0, 0);
+            }
+            else console.log("NIJE UBACILO SLIKU SRANJE");*/
+        };
+
+        $scope.redo = function () {
+            console.log("uslo u redo");
+        };
+
+        //AKO MOZES, NAPISI MI KAKO DA OVDE POSTAVIM VELICINU SLOVA SELECTOVANU OPCIJU
+        $scope.sizeChanged = function() {
+          
+        };
+
         /*Deo za tajmer*/
 
         $scope.angle = 0;
-        $scope.sec = 0;
+        $scope.c = 0;
 
         var moveTimer = function () {
             $scope.angle += 6;
