@@ -9,7 +9,7 @@ namespace GTW_Server.DAL.Models
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string Score { get; set; }
-        public string Date { get; set; }
+        public int Score { get; set; }
+        public DateTime Date { get; set; }
     }
 }

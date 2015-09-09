@@ -133,6 +133,8 @@
     <Content Include="JS\angular.min.js" />
     <Content Include="JS\Controllers\ControllerExample.js" />
     <Content Include="JS\Controllers\GameController.js" />
+    <Content Include="JS\Controllers\LandingPageController.js" />
+    <Content Include="JS\Service\getJSON.js" />
     <Content Include="JS\Service\getUser.js" />
     <Content Include="JS\Service\postJSON.js" />
     <Content Include="packages.config" />
@@ -934,6 +936,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Views\gameRoom.html" />
+    <Content Include="Views\landingPage.html" />
     <Content Include="Views\login.html" />
     <Content Include="Views\register.html" />
     <Content Include="Web.config" />

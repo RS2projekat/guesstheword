@@ -10,13 +10,13 @@ namespace GTW_Server.Services
 {
     public class OverallScoreServices : IDisposable
     {
-        public IEnumerable<OverallScore> getOverallScore()
+        public IEnumerable<OverallScore> getOverallScores()
         {
             using (DatabaseContext db = new DatabaseContext())
             {
                 try
                 {
-                    return db.OverallScore.ToList();
+                    return db.OverallScores.ToList();
                 }
                 catch (Exception e)
                 {

@@ -33,7 +33,7 @@
 
                     /*TO DO: Ova putanja ce se promeniti kada napravimo stranicu sa skorovima i aktivnim sobama.
                         Takodje, na kraju treba da obrisemo sve console.log naredbe*/
-                    $location.path("/gameRoom");
+                    $location.path("/landingPage");
                     
                 } else {
                     console.log("Korisnik nije ulogovan!");

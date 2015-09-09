@@ -52,7 +52,7 @@ app.controller("RegisterController", [
 
                     /*TO DO: Ovo treba promeniti da otvori profil tog korisnika gde su 
                     njegovi poeni i medalje (ako ih bude bilo)*/
-                    $location.path("/gameRoom");
+                    $location.path("/landingPage");
 
                 } else {/*TO DO: Zasto ovde ne ulazi? */
                     console.log("Korisnik nije registrovan!");

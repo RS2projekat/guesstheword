@@ -1,0 +1,37 @@
+﻿<div ng-controller="LandingPageController">
+    <div>
+        <h4>Weekly score</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="x in weeklyscore">
+                <td>{{ x.Username }}</td>
+                <td>{{ x.Score }}</td>
+                <td>{{ x.Date | date: 'd.M.yyyy.' }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <h4>Overall score</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="x in overallscore">
+                <td>{{ x.Username }}</td>
+                <td>{{ x.Score }}</td>
+                <td>{{ x.Date | date: 'd.M.yyyy.' }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

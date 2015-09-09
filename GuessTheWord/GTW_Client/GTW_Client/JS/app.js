@@ -15,6 +15,8 @@ app.config(['$locationProvider', '$routeProvider', 'xsProvider',
                 sa ng-controller u htmlu 
             controller: 'RegisterController'
             */
+        }).when('/landingPage', {
+            templateUrl: '/Views/landingPage.html'
         }).otherwise({
             redirectTo: '/login'
         });
