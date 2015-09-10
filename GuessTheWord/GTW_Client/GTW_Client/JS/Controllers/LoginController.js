@@ -30,9 +30,6 @@
 
                 if (result.data != {}) {
                     console.log("Uspesno ulogovan korisnik");
-
-                    /*TO DO: Ova putanja ce se promeniti kada napravimo stranicu sa skorovima i aktivnim sobama.
-                        Takodje, na kraju treba da obrisemo sve console.log naredbe*/
                     $location.path("/landingPage");
                     
                 } else {

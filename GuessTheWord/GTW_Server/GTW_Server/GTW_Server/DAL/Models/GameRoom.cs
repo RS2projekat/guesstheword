@@ -14,6 +14,5 @@ namespace GTW_Server.DAL.Models
         public int WinnerId { get; set; }
         public int PainterId { get; set; }
         public ICollection<User> Users { get; set; }
-            
     }
 }

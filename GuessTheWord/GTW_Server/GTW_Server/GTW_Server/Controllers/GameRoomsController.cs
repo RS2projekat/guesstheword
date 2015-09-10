@@ -49,7 +49,6 @@ namespace GTW_Server.Controllers
 
         [HttpPost]
         [Route("GTW/GameRooms/")]
-
         public IHttpActionResult AddRoom(GameRoom room)
         {
             try
@@ -66,6 +65,25 @@ namespace GTW_Server.Controllers
                 return BadRequest();
             }
         }
+
+        //[HttpPost]
+        //[Route("GTW/GameRooms/")]
+        //public IHttpActionResult AddRoom([FromBody] string room)
+        //{
+        //    try
+        //    {
+        //        using (RoomServices rs = new RoomServices())
+        //        {
+        //            if (rs.addRoom(room) == false)
+        //                return BadRequest() ;
+        //            return Ok();
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest();
+        //    }
+        //}
 
         [HttpPost]
         [Route("GTW/GameRooms/{idr}/Winner/")]
