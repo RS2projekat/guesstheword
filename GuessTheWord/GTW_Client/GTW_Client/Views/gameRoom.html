@@ -4,17 +4,28 @@
     <div ng-controller="GameController">
         <div class="roomCanvas">
             <div class="canvasTools">
+                
+                    
+                        Border Color:
+                        <div id="green" ng-click="color('green')"></div>
+                        <div id="blue" ng-click="color('blue')"></div>
+                        <div id="red" ng-click="color('red')"></div>
+                        <div id="yellow" ng-click="color('yellow')"></div>
+                        <div id="orange" ng-click="color('orange')"></div>
+                        <div id="black" ng-click="color('black')"></div>
+                        <div id="rose" ng-click="color('#FF0066')"></div>
+                        <div id="ljubicasto" ng-click="color('#9900CC')"></div>
+                        <div id="oker" ng-click="color('#CC9900')"></div>
+                        <div id="tirkizno" ng-click="color('#00CC99')"></div>
+                        <div id="trava" ng-click="color('#003300')"></div>
+                        <div id="bordo" ng-click="color('#660000')"></div>
+                   
 
-                Choose color
-                <div id="green" ng-click="color('green')"></div>
-                <div id="blue" ng-click="color('blue')"></div>
-                <div id="red" ng-click="color('red')"></div>
-                <div id="yellow" ng-click="color('yellow')"></div>
-                <div id="orange" ng-click="color('orange')"></div>
-                <div id="black" ng-click="color('black')"></div>
-
+                   
                 <!--OVDE BI TREBALO DA NA CLICK OTVORI PALETU, I TAJ SKRIPT SIGURNO RADI, SAMO STO NE VIDI SKRIPT-->
-                <input class="color" value="66ff00">
+               <form>
+                    <input class="color" value="66ff00" />
+                </form>
 
                 Eraser
                 <div id="white" ng-click="color('white')"></div>
@@ -24,7 +35,7 @@
                 <div id="rect" ng-click="drawingStyle('rect')"></div>
                 <div id="circle" ng-click="drawingStyle('circle')"></div>
 
-                <form name="selctForm">
+                <form name="selectForm">
                     <label for="selectSize">Size: </label>
                     <select id="selectSize" ng-model="sizeSelect" ng-change="sizeChanged()">
                         <option value="1">1</option>
@@ -50,7 +61,6 @@
 
 
             </div>
-
         </div>
         <div class="roomTimer">
 
@@ -78,4 +88,6 @@
             </p>
         </div>
     </div>
+
+    
 </div>
