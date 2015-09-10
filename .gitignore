@@ -16,3 +16,4 @@ GuessTheWord/GTW_Server/GTW_Server/GTW_Server/bin/GTW_Server.pdb
 *.Cache
 *.dll
 GuessTheWord/GTW_Server/GTW_Server/GTW_Server.v12.suo
+*.suo

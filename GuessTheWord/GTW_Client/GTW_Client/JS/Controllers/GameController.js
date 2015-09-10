@@ -301,4 +301,8 @@
             $scope.angle = 0;
             $timeout(moveTimer, 1000);
         };
+
+      /*  $scope.colorChanged = function(){
+            $scope.canvasModel.color = $scope.colorInput;
+        };*/
     });

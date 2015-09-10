@@ -72,34 +72,64 @@ svg {
     height:100vw;
 }
 #green{
-    width:10px;
-    height:10px;
+    width:15px;
+    height:15px;
     background:green;
 }
 #orange{
-    width:10px;
-    height:10px;
+    width:15px;
+    height:15px;
     background:orange;
 }
 #blue{
-    width:10px;
-    height:10px;
+    width:15px;
+    height:15px;
     background:blue;
 }
 #yellow{
-    width:10px;
-    height:10px;
+    width:15px;
+    height:15px;
     background:yellow;
 }
 #red{
-    width:10px;
-    height:10px;
+    width:15px;
+    height:15px;
     background:red;
 }
 #black{
-    width:10px;
-    height:10px;
+    width:15px;
+    height:15px;
     background:black;
+}
+#rose{
+    width:15px;
+    height:15px;
+    background:#FF0066;
+}
+#oker{
+    width:15px;
+    height:15px;
+    background:#CC9900;
+}
+#ljubicasto{
+    width:15px;
+    height:15px;
+    background:#9900CC;
+}
+#bordo{
+    width:15px;
+    height:15px;
+    background:#660000;
+}
+#trava{
+    width:15px;
+    height:15px;
+    background:#003300;
+}
+#tirkizno{
+    width:15px;
+    height:15px;
+    background:#00CC99;
 }
 #white{
     width:15px;
@@ -138,3 +168,4 @@ svg {
     height:15px;
     background-image:url('../Pictures/circle.png');
 }
+
