@@ -5,7 +5,7 @@
 
     <link href="CSS/bootstrap.css" rel="stylesheet" />
     <link href="CSS/style.css" rel="stylesheet" />
-    
+
 </head>
 <body ng-app="myApp">
     <div class="navbar navbar-default navbar-fixed-top">
@@ -15,10 +15,8 @@
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/landingPage">Home</a></li>
-                    <li><a href="#/gameRoom">Game room</a></li>
+                    <li><a href="#/gameRoom">Game Room</a></li>
                     <li><a href="#/register">Register</a></li>
-                    <li><a href="#/">Help</a></li> <!-- dodati-->
                 </ul>
             </div>
         </div>
@@ -30,10 +28,12 @@
             2. u app.js postavimo putanju za taj link"-->
     <div class="container">
         <div class="page-header" ng-view>
-            
+
         </div>
     </div>
 
+
+    <script src="../jscolor/jscolor.js"></script>
     <script src="//rawgit.com/XSockets/XSockets.Clients/master/src/XSockets.Clients/XSockets.JavaScript/XSockets.latest.js"></script>
     <script src="JS/angular.min.js"></script>
     <script src="JS/angular-route.min.js"></script>
@@ -42,13 +42,11 @@
     <script src="JS/Controllers/LoginController.js"></script>
     <script src="JS/Controllers/RegisterController.js"></script>
     <script src="JS/Controllers/GameController.js"></script>
-    <script src="JS/Controllers/LandingPageController.js"></script>
     <script src="JS/Service/postJSON.js"></script>
     <script src="JS/Service/getJSON.js"></script>
     <script src="//rawgit.com/XSockets/XSockets.Clients/master/src/XSockets.Clients/XSockets.angularJS/src/xsocketsProvider.min.js"></script>
-    <!--SKRIPT KOJI OTVARA PALETU-->
-    <script src="jscolor/jscolor.js"></script>
-  
+
+
 
 </body>
 </html>

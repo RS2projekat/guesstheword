@@ -13,10 +13,18 @@
         var rect = canvas.getBoundingClientRect();
         var movingIdn = false;
 
+        $scope.undoDisabled = true;
+        $scope.redoDisabled = true;
+
         $scope.img_update = function () {
             console.log("USLO");
+            var v = canvaso.toDataURL();
+            $scope.undoArray.push(v);
             contexto.drawImage(canvas, 0, 0);
+            $scope.redoArray.length = 0;
             context.clearRect(0, 0, canvas.width, canvas.height);
+            $scope.redoDisabled = true;
+            $scope.undoDisabled = false;
         }
         $scope.removeFlag = function () {
             drawing = false;
@@ -46,8 +54,8 @@
         var pencilFlag = false, rectFlag = false, lineFlag = false, circleFlag = false;
         var started = false;
 
-        var undoArray = [];
-        var redoArray = [];
+        $scope.undoArray = [];
+        $scope.redoArray = [];
 
         $scope.mouseDown = function (event) {
             console.log("pocelo da crta");
@@ -157,12 +165,12 @@
                 started = false;
                 $scope.removeFlag();
                 $scope.img_update();
-                undoArray.push(contexto);
+                $scope.undoDisabled = false;
             }
 
         };
 
-        
+
         //postavljlanje boje
         $scope.color = function (color) {
             $scope.canvasModel.color = color;
@@ -223,24 +231,48 @@
             }
         };
 
-        //ULAZI U UNDO, SADA CU TO SMISLITI KAKO DA URADIM
+
         $scope.undo = function () {
+
             console.log("USLO U UNDO");
-            var canv1 = undoArray.pop();
-            redoArray.push(canv1);
-            var canv2 = undoArray.pop();
-            if (canv2 != null) {
-                contexto.drawImage(canv2, 0, 0);
+            var canv1 = $scope.undoArray.pop();
+            var state = canvaso.toDataURL();
+            $scope.redoArray.push(state);
+            $scope.redoDisabled = false;
+            if (canv1 != null) {
+                contexto.clearRect(0, 0, canvaso.width, canvaso.height);
+                var img = new Image;
+                img.onload = function () {
+                    contexto.drawImage(img, 0, 0);
+
+                };
+                img.src = canv1;
             }
-            else console.log("NIJE UBACILO SLIKU SRANJE");
+            if ($scope.undoArray.length == 0)
+                $scope.undoDisabled = true;
         };
+
 
         $scope.redo = function () {
-            console.log("uslo u redo");
+            console.log("USLO U REDO");
+            var canv1 = $scope.redoArray.pop();
+            var state = canvaso.toDataURL();
+            $scope.undoArray.push(state);
+            $scope.undoDisabled = false;
+            if (canv1 != null) {
+                contexto.clearRect(0, 0, canvaso.width, canvaso.height);
+                var img = new Image;
+                img.onload = function () {
+                    contexto.drawImage(img, 0, 0);
+
+                };
+                img.src = canv1;
+            }
+            if ($scope.redoArray.length == 0)
+                $scope.redoDisabled = true;
         };
 
-        //AKO MOZES, NAPISI MI KAKO DA OVDE POSTAVIM VELICINU SLOVA SELECTOVANU OPCIJU
-        $scope.sizeChanged = function() {
+        $scope.sizeChanged = function () {
             $scope.canvasModel.lineWidth = $scope.sizeSelect;
         };
 
