@@ -139,7 +139,11 @@
 
         </div>
     </div>
-    <div class="roomGuesses">Guess</div>
+    <div class="roomGuesses">
+        <textarea id="guessesArea"></textarea>
+        <p>Guess</p>
+        <input id="guessInput" type="text" class="form-control" id="focusedInput" ng-model="guessMessage" />
+    </div>
     <div class="roomChat" ng-controller="ChatController">
         <h1>Simple chat</h1>
         <label>Your message</label>

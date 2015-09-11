@@ -8,7 +8,7 @@
     background-color:#bbcccc;
     float:left;
     width:60vw;/*Viewport Width*/
-    height:80vh;
+    height:100vh;
 }
 .roomTimer {
     background-color:#927f92;
@@ -20,7 +20,7 @@
     background-color:#347d7b;
     float:left;
     width:30vw;
-    height:30vh;
+    height:50vh;
 }
 .roomChat{
     background-color:#7fc7af;
@@ -44,7 +44,7 @@ svg {
 
 /*CANVAS*/
 #canvasContainer{
-    float: right;
+    float: left;
     width:40vw;
     height:100vh;
     position:relative;
@@ -68,8 +68,8 @@ svg {
 /*Alati*/
 .canvasTools{
     float:left;
-    width:10vw;
-    height:150vh;
+    width:100px;
+    height:200vh;
 }
 .green{
     width:15px;
@@ -238,4 +238,14 @@ svg {
     float:left;
     height:50px;
     width:100px;
+}
+
+
+#guessesArea{
+    height:150px;
+    width:28vw;
+}
+
+#guessInput{
+    width:28vw;
 }
