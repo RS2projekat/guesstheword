@@ -1,5 +1,5 @@
 ﻿.roomContent{
-    background-color:red;
+    background-color:white;
     position:relative;
     width:100vw;
     height:150vh;
@@ -12,13 +12,13 @@
 }
 .roomTimer {
     background-color:#927f92;
-    float:right;
+    float:left;
     width:30vw;
-    height:30vh;
+    height:50vh;
 }
 .roomGuesses{
     background-color:#347d7b;
-    float:right;
+    float:left;
     width:30vw;
     height:30vh;
 }
@@ -35,11 +35,11 @@
 .square {
   position: absolute;
   width: 30vw;
-  height: 30vh;
+  height: 50vh;
 }
 svg {
   width: 30vw;
-  height: 30vh;
+  height: 50vh;
 }
 
 /*CANVAS*/
@@ -71,65 +71,95 @@ svg {
     width:10vw;
     height:150vh;
 }
-#green{
+.green{
     width:15px;
     height:15px;
     background:green;
 }
-#orange{
+.orange{
     width:15px;
     height:15px;
     background:orange;
 }
-#blue{
+.blue{
     width:15px;
     height:15px;
     background:blue;
 }
-#yellow{
+.yellow{
     width:15px;
     height:15px;
     background:yellow;
 }
-#red{
+.red{
     width:15px;
     height:15px;
     background:red;
 }
-#black{
+.black{
     width:15px;
     height:15px;
     background:black;
 }
-#rose{
+.rose{
     width:15px;
     height:15px;
     background:#FF0066;
 }
-#oker{
+.oker{
     width:15px;
     height:15px;
     background:#CC9900;
 }
-#ljubicasto{
+.ljubicasto{
     width:15px;
     height:15px;
     background:#9900CC;
 }
-#bordo{
+.bordo{
     width:15px;
     height:15px;
     background:#660000;
 }
-#trava{
+.trava{
     width:15px;
     height:15px;
     background:#003300;
 }
-#tirkizno{
+.tirkizno{
     width:15px;
     height:15px;
     background:#00CC99;
+}
+.green2{
+    width:15px;
+    height:15px;
+    background:#00FF00;
+}
+.ljubicasto2{
+    width:15px;
+    height:15px;
+    background:#660033;
+}
+.rose2{
+    width:15px;
+    height:15px;
+    background:#FF0066;
+}
+.belo{
+    width:15px;
+    height:15px;
+    background:#FFFFFF;
+}
+.orange2{
+    width:15px;
+    height:15px;
+    background:#FF3300;
+}
+.teget{
+    width:15px;
+    height:15px;
+    background:#000033;
 }
 #white{
     width:15px;
@@ -169,3 +199,43 @@ svg {
     background-image:url('../Pictures/circle.png');
 }
 
+#boje1{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje2{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje3{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje4{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje5{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje6{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#borderColor{
+    height:50px;
+    width:100px;
+   
+}
+#fillColor{
+    float:left;
+    height:50px;
+    width:100px;
+}

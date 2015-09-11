@@ -35,8 +35,10 @@
         $scope.mouseIsDown = false;//flag
 
         $scope.canvasModel = {
-            color: black,
+            color: 'black',
+            fillColor: 'white',
             lineWidth: 2,
+            rubberWidth: 4,
             prevX: 0,
             prevY: 0,
             currX: 0,
@@ -114,8 +116,10 @@
                 if (!w || !h)
                     return;
                 context.strokeStyle = $scope.canvasModel.color;
+                context.fillStyle = $scope.canvasModel.fillColor;
                 context.lineWidth = $scope.canvasModel.lineWidth;
                 context.clearRect(0, 0, canvas.width, canvas.height);
+                context.fillRect(x, y, w, h);
                 context.strokeRect(x, y, w, h);
 
             }
@@ -150,9 +154,12 @@
 
                 var radius = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2))
                 context.arc($scope.canvasModel.prevX, $scope.canvasModel.prevY, radius, 0, 2 * Math.PI, false);
+                context.fillStyle = $scope.canvasModel.fillColor;
                 context.strokeStyle = $scope.canvasModel.color;
                 context.lineWidth = $scope.canvasModel.lineWidth;
+                context.fill();
                 context.stroke();
+                
                 context.closePath();
             }
         };
@@ -169,19 +176,21 @@
             }
 
         };
+        $scope.fillColor = function (color) {
+            $scope.canvasModel.fillColor = color;
 
-
+        }
         //postavljlanje boje
         $scope.color = function (color) {
             $scope.canvasModel.color = color;
 
             if (color == "white") {
-                $scope.canvasModel.lineWidth = 14;
+                $scope.canvasModel.lineWidth = $scope.canvasModel.rubberWidth;
                 pencilFlag = true;
                 rectFlag = false;
+                lineFlag = false;
+                circleFlag = false;
             }
-            else
-                $scope.canvasModel.lineWidth = 2;
         };
 
         //tehnike crtanja
@@ -274,6 +283,9 @@
 
         $scope.sizeChanged = function () {
             $scope.canvasModel.lineWidth = $scope.sizeSelect;
+        };
+        $scope.rubberChanged = function () {
+            $scope.canvasModel.rubberWidth = $scope.rubberSelect;
         };
 
         /*Deo za tajmer*/
