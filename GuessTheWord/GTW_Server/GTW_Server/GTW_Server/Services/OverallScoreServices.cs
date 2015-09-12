@@ -16,7 +16,22 @@ namespace GTW_Server.Services
             {
                 try
                 {
-                    return db.OverallScores.ToList();
+                    return db.OverallScores.ToList().OrderByDescending(x => x.Score);
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public IEnumerable<OverallScore> getOverallScores(User user)
+        {
+            using (DatabaseContext db = new DatabaseContext())
+            {
+                try
+                {
+                    return db.OverallScores.Where(x => x.Username == user.Username).OrderByDescending(x => x.Score);
                 }
                 catch (Exception e)
                 {

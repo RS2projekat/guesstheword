@@ -16,7 +16,7 @@ namespace GTW_Server.Services
             {
                 try
                 {
-                    return db.WeeklyScores.ToList();
+                    return db.WeeklyScores.ToList().OrderByDescending(x => x.Score);
                 }
                 catch (Exception e)
                 {

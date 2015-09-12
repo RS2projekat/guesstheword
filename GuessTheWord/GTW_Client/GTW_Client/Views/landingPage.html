@@ -1,59 +1,89 @@
 ﻿<div ng-controller="LandingPageController">
-    <div style="float:right">
-        <h4>Available rooms</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Created</th>
+    <div style="float:left;width:auto">
+        <div style="overflow:auto">
+            <h4>Weekly score</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="x in weeklyscore">
+                    <td>{{ x.Username }}</td>
+                    <td>{{ x.Score }}</td>
+                    <td>{{ x.Date | date: 'd.M.yyyy.' }}</td>
                 </tr>
-            </thead>
-            <tr ng-repeat="x in rooms">
-                <td>{{ x.Name }}</td>
-                <td>{{ x.Date | date: 'd.M.yyyy, H:m' }}</td>
-            </tr>
-        </table>
+            </table>
+        </div>
 
-        <form>
-            <label for="inputNewRoom" class="col-lg-2 control-label">Add new room</label>
-            <input type="text" ng-model="newRoom.Name" class="form-control" id="inputNewRoom" placeholder="Name">
-            <button type="submit" ng-click="addRoom()" class="btn btn-primary">Add</button>
-        </form>
-    </div>
-
-    <div>
-        <h4>Weekly score</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Score</th>
-                    <th>Date</th>
+        <div style="overflow:auto">
+            <h4>Overall score</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="x in overallscore">
+                    <td>{{ x.Username }}</td>
+                    <td>{{ x.Score }}</td>
+                    <td>{{ x.Date | date: 'd.M.yyyy.' }}</td>
                 </tr>
-            </thead>
-            <tr ng-repeat="x in weeklyscore">
-                <td>{{ x.Username }}</td>
-                <td>{{ x.Score }}</td>
-                <td>{{ x.Date | date: 'd.M.yyyy.' }}</td>
-            </tr>
-        </table>
+            </table>
+        </div>
     </div>
-
-    <div>
-        <h4>Overall score</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Score</th>
-                    <th>Date</th>
+    
+    <!--potrebna informacija o ulogovanom korisniku-->
+    <!--<div style="float:left;position:relative;left:100px">
+        <div style=" overflow:auto">
+            <h4>My scores</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Score</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="x in myScores">
+                    <td>{{ x.Score }}</td>
+                    <td>{{ x.Date | date: 'd.M.yyyy' }}</td>
                 </tr>
-            </thead>
-            <tr ng-repeat="x in overallscore">
-                <td>{{ x.Username }}</td>
-                <td>{{ x.Score }}</td>
-                <td>{{ x.Date | date: 'd.M.yyyy.' }}</td>
-            </tr>
-        </table>
+            </table>
+        </div>
+    </div>-->
+
+    <div style ="float:left;position:relative;left:100px">
+        <div style=" overflow:auto">
+            <h4>Available rooms</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Created</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="x in rooms">
+                    <td>{{ x.Name }}</td>
+                    <td>{{ x.Date | date: 'd.M.yyyy, H:m' }}</td>
+                    <td>
+                        <form>
+                            <button type="submit" ng-click="enterRoom()" class="btn btn-primary">Enter</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <form>
+                <label for="inputNewRoom" class="col-lg-2 control-label">Add new room</label>
+                <input type="text" ng-model="newRoom.Name" class="form-control" id="inputNewRoom" placeholder="Name">
+                <button type="submit" ng-click="addRoom()" class="btn btn-primary">Add</button>
+            </form>
+        </div>
     </div>
+    
 </div>

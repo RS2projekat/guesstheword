@@ -11,10 +11,14 @@
         getJSON.getJSON("http://localhost:43474/GTW/GameRooms/").then(function (result) {
             $scope.rooms = result.data;
         })
+
+        // potrebna informacija o ulogovanom korisniku
+        //getJSON.getJSON("http://localhost:43474/GTW/OverallScores/", user).then(function (result) {
+        //    $scope.myScores = result.data;
+        //})
         
         $scope.addRoom = function()
         {
-            console.log("usao u addRoom(), name: " + $scope.newRoom.Name);
             if ($scope.newRoom.Name == "")
             {
                 $window.alert("You must enter room name");

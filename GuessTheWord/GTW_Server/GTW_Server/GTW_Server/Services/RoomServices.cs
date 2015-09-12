@@ -14,7 +14,7 @@ namespace GTW_Server.Services
         {
             using(DatabaseContext db = new DatabaseContext())
             {
-                return db.GameRooms.Include("Users").ToList();
+                return db.GameRooms.Include("Users").ToList().OrderByDescending(x => x.Date);
             }
         }
         public GameRoom getRoom(int idRoom)

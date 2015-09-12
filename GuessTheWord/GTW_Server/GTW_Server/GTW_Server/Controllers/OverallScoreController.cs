@@ -28,5 +28,23 @@ namespace GTW_Server.Controllers
                 return null;
             }
         }
+
+        [HttpGet]
+        [Route("GTW/OverallScores/")]
+        public IEnumerable<OverallScore> GetOverallScores(User user)
+        {
+            try
+            {
+                using (OverallScoreServices ws = new OverallScoreServices())
+                {
+                    return ws.getOverallScores(user);
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
     }
 }
