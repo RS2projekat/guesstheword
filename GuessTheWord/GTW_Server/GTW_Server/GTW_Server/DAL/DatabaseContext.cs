@@ -15,7 +15,6 @@ namespace GTW_Server.DAL
 
         public DbSet<User> Users { get; set; }
         public DbSet<GameRoom> GameRooms { get; set; }
-        public DbSet<WeeklyScore> WeeklyScores { get; set; }
-        public DbSet<OverallScore> OverallScores { get; set; }
+
     }
 }

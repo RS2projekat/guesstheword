@@ -195,32 +195,14 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GameRoomsController.cs" />
-    <Compile Include="Controllers\OverallScoreController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Controllers\WeeklyScoreController.cs" />
-    <Compile Include="DAL\Models\OverallScore.cs" />
-    <Compile Include="DAL\Models\WeeklyScore.cs" />
-    <Compile Include="Migrations\201508271353385_5Migration.cs" />
-    <Compile Include="Migrations\201508271353385_5Migration.Designer.cs">
-      <DependentUpon>201508271353385_5Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201509161018203_firstMigration.cs" />
+    <Compile Include="Migrations\201509161018203_firstMigration.Designer.cs">
+      <DependentUpon>201509161018203_firstMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201508271638582_6Migration.cs" />
-    <Compile Include="Migrations\201508271638582_6Migration.Designer.cs">
-      <DependentUpon>201508271638582_6Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508271716013_7Migration.cs" />
-    <Compile Include="Migrations\201508271716013_7Migration.Designer.cs">
-      <DependentUpon>201508271716013_7Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508310920258_8Migration.cs" />
-    <Compile Include="Migrations\201508310920258_8Migration.Designer.cs">
-      <DependentUpon>201508310920258_8Migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Services\OverallScoreServices.cs" />
     <Compile Include="Services\RoomServices.cs" />
     <Compile Include="Services\UserServices.cs" />
-    <Compile Include="Services\WeeklyScoreServices.cs" />
     <Compile Include="XSocketControllers\ChatController.cs" />
     <Compile Include="XSocketControllers\GameRoomActiveController.cs" />
     <Compile Include="XSocketControllers\GameRoomInactiveController.cs" />
@@ -228,14 +210,6 @@
     <Compile Include="DAL\Models\GameRoom.cs" />
     <Compile Include="DAL\Models\User.cs" />
     <Compile Include="DAL\DatabaseContext.cs" />
-    <Compile Include="Migrations\201508231218339_FirstMigration.cs" />
-    <Compile Include="Migrations\201508231218339_FirstMigration.Designer.cs">
-      <DependentUpon>201508231218339_FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508231247404_SecondMigration.cs" />
-    <Compile Include="Migrations\201508231247404_SecondMigration.Designer.cs">
-      <DependentUpon>201508231247404_SecondMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerContext.cs" />
@@ -245,27 +219,12 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201508231218339_FirstMigration.resx">
-      <DependentUpon>201508231218339_FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508231247404_SecondMigration.resx">
-      <DependentUpon>201508231247404_SecondMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508271353385_5Migration.resx">
-      <DependentUpon>201508271353385_5Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508271638582_6Migration.resx">
-      <DependentUpon>201508271638582_6Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508271716013_7Migration.resx">
-      <DependentUpon>201508271716013_7Migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508310920258_8Migration.resx">
-      <DependentUpon>201508310920258_8Migration.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <EmbeddedResource Include="Migrations\201509161018203_firstMigration.resx">
+      <DependentUpon>201509161018203_firstMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

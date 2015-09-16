@@ -67,13 +67,6 @@ C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\Guess
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\bin\XSockets.Serialization.xml
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\bin\XSockets.Server.xml
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.csprojResolveAssemblyReference.cache
-C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations.FirstMigration.resources
-C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations.SecondMigration.resources
-C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations._5Migration.resources
-C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations._6Migration.resources
-C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations._7Migration.resources
-C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations._8Migration.resources
-C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.csproj.GenerateResource.Cache
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.dll
 C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.pdb
 C:\Users\user\Source\Repos\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\bin\GTW_Server.dll.config
@@ -388,3 +381,5 @@ F:\Faks\IV\RS2\projekat\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Se
 F:\Faks\IV\RS2\projekat\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.csproj.GenerateResource.Cache
 F:\Faks\IV\RS2\projekat\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.dll
 F:\Faks\IV\RS2\projekat\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.pdb
+C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.Migrations.firstMigration.resources
+C:\Users\Бранислава\Desktop\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Server\GTW_Server\GTW_Server\obj\Debug\GTW_Server.csproj.GenerateResource.Cache
