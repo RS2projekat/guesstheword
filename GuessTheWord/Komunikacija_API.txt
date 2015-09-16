@@ -13,7 +13,8 @@ kontroler.invoke('register', OBJEKAT_USERA).then(function (data){
 	data -> bool koji se vraca
 });
 
-- Lista soba u koje klijent moze da udje (one koje nemaju 4 clana jos uvek) se dobija pozivom funkcije {gameroom} controllera {listinactiverooms}. Vraca JSON -> lista objekata GameRoom.
+- Lista soba u koje klijent moze da udje (one koje nemaju 4 clana jos uvek) se dobija pozivom funkcije {gameroom} controllera {listinactiverooms}.
+Vraca JSON -> lista objekata GameRoom.
 Isto se rukuje sa tim kao i kod prethodne stavke.
 
 - Ukoliko klijent zeli da napravi novu sobu to radi tako sto pozove funkciju kontrolera {makenewroom} i prosledi joj objekat GameRoom {Name, Date}. 

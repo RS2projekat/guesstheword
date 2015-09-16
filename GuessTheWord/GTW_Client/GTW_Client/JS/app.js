@@ -26,6 +26,6 @@ app.config(['$locationProvider', '$routeProvider', 'xsProvider',
         xsProvider.url = "ws://localhost:43474/";
 
         //ovde navode kontroleri sa servera za xsockete
-        xsProvider.controllers = ["chat"];
+        xsProvider.controllers = ["chat", "room"];
     }
 ]);

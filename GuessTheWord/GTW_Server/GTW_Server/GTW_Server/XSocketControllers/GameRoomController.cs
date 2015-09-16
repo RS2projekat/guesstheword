@@ -31,7 +31,8 @@ namespace GTW_Server.XSocketControllers
         }
         public IEnumerable<GameRoom> listInactiveRooms() 
         {
-            return ServerContext.Instance.gameRooms.FindAll(g => g.Users.Count != 4);
+            return ServerContext.Instance.roomServices.getRooms();
+            //return ServerContext.Instance.gameRooms.FindAll(g => g.Users.Count != 4);
         }
 
         public bool makeNewRoom(GameRoom newgr) 

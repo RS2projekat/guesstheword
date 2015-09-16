@@ -1,5 +1,7 @@
-﻿<div ng-controller="LandingPageController">
-    <div style="float:left;width:auto">
+﻿<div ng-controller="gameroom">
+    <!--<div style="float:left;width:auto">
+        <button type="button" ng-click="listInactive()" class="btn btn-primary">Submit</button>
+        
         <div style="overflow:auto">
             <h4>Weekly score</h4>
             <table class="table">
@@ -35,7 +37,7 @@
                 </tr>
             </table>
         </div>
-    </div>
+    </div>-->
     
     <!--potrebna informacija o ulogovanom korisniku-->
     <!--<div style="float:left;position:relative;left:100px">
@@ -71,7 +73,7 @@
                     <td>{{ x.Date | date: 'd.M.yyyy, H:m' }}</td>
                     <td>
                         <form>
-                            <button type="submit" ng-click="enterRoom()" class="btn btn-primary">Enter</button>
+                            <button type="submit" ng-click="enterRoom($index)" class="btn btn-primary">Enter</button>
                         </form>
                     </td>
                 </tr>
@@ -80,7 +82,7 @@
         <div>
             <form>
                 <label for="inputNewRoom" class="col-lg-2 control-label">Add new room</label>
-                <input type="text" ng-model="newRoom.Name" class="form-control" id="inputNewRoom" placeholder="Name">
+                <input type="text" ng-model="newRoom" class="form-control" id="inputNewRoom" placeholder="Name">
                 <button type="submit" ng-click="addRoom()" class="btn btn-primary">Add</button>
             </form>
         </div>
