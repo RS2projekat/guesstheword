@@ -18,10 +18,7 @@ namespace GTW_Server.Controllers
         {
             try
             {
-                using (UserServices us = new UserServices()) 
-                {
-                    return us.getUsers();
-                }
+                return ServerContext.Instance.userServices.getUsers();
             }
             catch (Exception e)
             {
@@ -33,83 +30,63 @@ namespace GTW_Server.Controllers
         [Route("GTW/Users/Login")]
         public IHttpActionResult LoginUser(User user)
         {
-            using(UserServices us = new UserServices())
-            {
-                var u = us.getUser(user);
+            var u = ServerContext.Instance.userServices.getUser(user);
 
-                if (u == null)
-                    return NotFound();
+            if (u == null)
+                return NotFound();
 
-                return Ok(u);
+            return Ok(u);
 
-            }
         }
 
         [HttpGet]
         [Route("GTW/Users/{id}/Role")]
         public IHttpActionResult GetUserRole(int id)
         {
-            using(UserServices us = new UserServices())
-            {
-                var userRole = us.getUserRole(id);
-                if (userRole.Equals("None"))
-                    return BadRequest();
-                else 
-                    return Ok(userRole);
-            }
+           var userRole = ServerContext.Instance.userServices.getUserRole(id);
+           if (userRole.Equals("None"))
+                return BadRequest();
+           else 
+                return Ok(userRole);
         }
 
         [HttpGet]
         [Route("GTW/Users/{id}/GameRooms")]
         public IEnumerable<GameRoom> GetUserGameRooms(int id)
         {
-            using (UserServices us = new UserServices())
-            {
-                return us.getRoomsForUser(id);
-            }
+            return ServerContext.Instance.userServices.getRoomsForUser(id);
         }
 
         [HttpPost]
         [Route("GTW/Users/Register")]
         public IHttpActionResult PostUser(User user)
         {
-            using(UserServices us = new UserServices())
-            {
-                 ;
-                if (us.addUser(user) == false)
-                    return BadRequest();
-                else
-                    return Ok();
-            }
+           if (ServerContext.Instance.userServices.addUser(user) == false)
+              return BadRequest();
+           else
+              return Ok();  
         }
 
         [HttpPost]
         [Route("GTW/Users/{id}/Role/")]
         public IHttpActionResult UpdateRole(int id,User user)
         {
-            using(UserServices us = new UserServices())
-            {
-                if (us.updateUserRole(id, user.Role) == true)
-                    return Ok();
-                else
-                    return BadRequest();
-            }
+           if (ServerContext.Instance.userServices.updateUserRole(id, user.Role) == true)
+               return Ok();
+           else
+               return BadRequest();
         }
 
         [HttpDelete]
         [Route("GTW/Users/{id}")]
         public IHttpActionResult DeleteUser(int id)
         {
-            using (UserServices us = new UserServices())
-            {
-                
-                if (us.deleteUser(id) == true)
-                    return Ok();
-                else
-                    return BadRequest();
-            }
+          if (ServerContext.Instance.userServices.deleteUser(id) == true)
+               return Ok();
+          else
+               return BadRequest();
         }
 
-        
     }
+    
 }

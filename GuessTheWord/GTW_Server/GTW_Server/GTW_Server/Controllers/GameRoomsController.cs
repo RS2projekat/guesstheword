@@ -18,10 +18,7 @@ namespace GTW_Server.Controllers
         {
             try
             {
-                using (RoomServices rs = new RoomServices())
-                {
-                    return rs.getRooms();
-                }
+                return ServerContext.Instance.roomServices.getRooms();
             }
             catch (Exception e)
             {
@@ -36,10 +33,7 @@ namespace GTW_Server.Controllers
         {
             try
             {
-                using (RoomServices rs = new RoomServices())
-                {
-                    return rs.getRoom(id);
-                }
+                return ServerContext.Instance.roomServices.getRoom(id);
             }
             catch (Exception e)
             {
@@ -53,12 +47,9 @@ namespace GTW_Server.Controllers
         {
             try
             {
-                using (RoomServices rs = new RoomServices())
-                {
-                    if (rs.addRoom(room) == false)
-                        return BadRequest();
-                    return Ok();
-                }
+               if (ServerContext.Instance.roomServices.addRoom(room) == false)
+                  return BadRequest();
+               return Ok();
             }
             catch (Exception e)
             {
@@ -92,12 +83,9 @@ namespace GTW_Server.Controllers
         {
             try
             {
-                using (RoomServices rs = new RoomServices())
-                {
-                    if(rs.makeWinner(user.Id, idr) == false)
-                        return BadRequest();
-                    return Ok();
-                }
+                if(ServerContext.Instance.roomServices.makeWinner(user.Id, idr) == false)
+                   return BadRequest();
+                return Ok();
             }
             catch (Exception e)
             {
@@ -111,12 +99,9 @@ namespace GTW_Server.Controllers
         {
             try
             {
-                using (RoomServices rs = new RoomServices())
-                {
-                    if (rs.addUsersToRoom(users, idr) == false)
-                        return BadRequest();
-                    return Ok();
-                }
+                if (ServerContext.Instance.roomServices.addUsersToRoom(users, idr) == false)
+                   return BadRequest();
+                return Ok();
             }
             catch (Exception e)
             {
@@ -131,10 +116,7 @@ namespace GTW_Server.Controllers
         {
             try
             {
-                using (RoomServices rs = new RoomServices())
-                {
-                    return rs.getUsersInRoom(idr);
-                }
+                return ServerContext.Instance.roomServices.getUsersInRoom(idr);
             }
             catch (Exception e)
             {

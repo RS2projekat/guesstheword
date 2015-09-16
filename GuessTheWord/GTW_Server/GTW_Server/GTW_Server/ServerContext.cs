@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using GTW_Server.DAL.Models;
+using GTW_Server.Services;
 
 namespace GTW_Server
 {
     public class ServerContext : IDisposable
     {
         private static ServerContext instance;
-
-        public List<GameRoom> activeRooms { get; set; }
-        public List<GameRoom> inactiveRooms { get; set; }
+        public List<GameRoom> gameRooms { get; set; }
+        public RoomServices roomServices { get; set; }
+        public UserServices userServices { get; set; }
         public Random idGenerator { get; set; }
-        public int proba { get; set; }
 
         public bool addNewRoom(string name, User user) 
         {
@@ -23,7 +23,7 @@ namespace GTW_Server
                 gr.Users = new List<User>();
                 gr.Users.Add(user);
 
-                inactiveRooms.Add(gr);
+                gameRooms.Add(gr);
                 
                 return true;
             }
@@ -37,7 +37,7 @@ namespace GTW_Server
         {
             try
             {
-                foreach (var gr in inactiveRooms)
+                foreach (var gr in gameRooms)
                     if (gr.Id == gameroom.Id)
                     {
                         gr.Users.Add(user);
@@ -51,32 +51,12 @@ namespace GTW_Server
             }
         }
 
-        public bool activateRoom(int idRoom)
-        {
-            try
-            {
-                var room = inactiveRooms.Find(x => x.Id == idRoom);
-
-                if (room == null)
-                    return false;
-
-                activeRooms.Add(room);
-
-                inactiveRooms.Remove(room);
-
-                return true;
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
-        }
-
         private ServerContext() 
         {
-            activeRooms = new List<GameRoom>();
-            inactiveRooms = new List<GameRoom>();
+            gameRooms = new List<GameRoom>();
             idGenerator = new Random();
+            roomServices = new RoomServices();
+            userServices = new UserServices();
         }
         public static ServerContext Instance 
         {

@@ -19,7 +19,6 @@ namespace GTW_Server.XSocketControllers
         /// </summary>
         public void ChatMessage(IMessage message)
         {
-            ServerContext.Instance.proba = message.ToString().Count();
             this.InvokeToAll(message);
         }
 

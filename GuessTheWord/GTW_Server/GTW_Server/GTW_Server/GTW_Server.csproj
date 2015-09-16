@@ -201,11 +201,11 @@
     <Compile Include="Migrations\201509161018203_firstMigration.Designer.cs">
       <DependentUpon>201509161018203_firstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserMessage.cs" />
     <Compile Include="Services\RoomServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="XSocketControllers\ChatController.cs" />
-    <Compile Include="XSocketControllers\GameRoomActiveController.cs" />
-    <Compile Include="XSocketControllers\GameRoomInactiveController.cs" />
+    <Compile Include="XSocketControllers\GameRoomController.cs" />
     <Compile Include="XSocketControllers\GlobalController.cs" />
     <Compile Include="DAL\Models\GameRoom.cs" />
     <Compile Include="DAL\Models\User.cs" />
@@ -218,9 +218,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201509161018203_firstMigration.resx">
       <DependentUpon>201509161018203_firstMigration.cs</DependentUpon>

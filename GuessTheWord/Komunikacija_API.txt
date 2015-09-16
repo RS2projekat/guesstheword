@@ -1,0 +1,68 @@
+API za komunikaciju koja se odnosi na GameRoom
+
+Stringove koje treba bukvalno prekopirati i koristiti kao takve cu pisati izmedju viticastih zagrada {}.
+
+Pre svega, kada se klijent uloguje, potrebno je napraviti nov XSocket kontroler na frontendu (kao onaj za chat) pod nazivom {gameroom}. 
+Ukoliko to ne uspe, mozemo raditi i sa ovim jadnim {chat} kontrolerom, strpacu svu logiku u njega na bekendu.
+
+- Kada se taj {gameroom} kontroler napravi, potrebno je pozvati funkciju tog kontrolera {register} i proslediti joj objekat User-a tj. korisnika.
+Ta funkcija vraca bool uspelo/nije uspelo.
+Na frontendu se to radi ovako:
+
+kontroler.invoke('register', OBJEKAT_USERA).then(function (data){
+	data -> bool koji se vraca
+});
+
+- Lista soba u koje klijent moze da udje (one koje nemaju 4 clana jos uvek) se dobija pozivom funkcije {gameroom} controllera {listinactiverooms}. Vraca JSON -> lista objekata GameRoom.
+Isto se rukuje sa tim kao i kod prethodne stavke.
+
+- Ukoliko klijent zeli da napravi novu sobu to radi tako sto pozove funkciju kontrolera {makenewroom} i prosledi joj objekat GameRoom {Name, Date}. 
+Ta funkcija vraca bool uspelo/nije uspelo.
+Isto se rukuje sa tim kao kod druge prethodne stavke.
+
+- Ukoliko klijent zeli da udje u neku sobu to radi tako sto pozove funkciju kontrolera {getintoroom} i prosledi joj objekat GameRoom.
+Ta funkcija vraca bool usao/nije usao.
+Isto se rukuje sa tim kao kod trece prethodne stavke.
+
+- Ukoliko klijent zeli da zapocne igru (onaj koji crta to moze da uradi) to se radi tako sto se pozove funkcija kontrolera {startgame} i prosledi joj se rec.
+Ta funkcija poziva na svim klijentima u sobi funkciju {start} i prosledjuje joj objekat User-a koji je zapoceo igru.
+Znaci ovako, prvo se pozove funkcija kontrolera:
+
+kontroler.invoke('startgame',rec); 
+
+Tada se na frontendu kod svih klijenata u sobi poziva funkcija start koja se definise ovako:
+
+kontroler.start = function(data) {
+	data -> user koji je zapoceo igru
+};
+
+- Kada se igra zavrsi ukoliko niko nije pogodio potrebno je pozvati funkciju kontrolera {endgame}. 
+Ta funkcija poziva na svim klijentima u sobi funkciju {end} i prosledjuje joj objekat User-a koji je zavrsio igru.
+Isto se rukuje kao i u prethodnom primeru.
+
+- Pogadjanje se radi tako sto se pozove funkcija kontrolera {guesstheword} i prosledi joj se string-rec.
+Ukoliko je korisnik pogodio, na svim klijentima se poziva funkcija {win} i prosledjuje joj se objekat User-a koji je pogodio.
+Ukoliko nije, onda se na svim klijentima poziva funkcija {wrong} i prosledjuje joj se objekat {User, String pokusaj}.
+Na frontendu to se radi ovako:
+
+kontroler.invoke('guesstheword',pokusaj);
+
+A funkcije win i wrong:
+
+kontroler.win = function(data) {
+	data -> user koji je pogodio
+};
+
+kontroler.wrong = function(data) {
+	data -> {User, String pokusaj}
+};
+
+- Slanje Canvasa se radi tako sto se pozove funkcija kontrolera {sendcanvas} i prosledjuje joj se objekat canvas.getContext(). 
+Ta funkcija ona prosledjuje taj kontekst klijentima u sobi tako sto pozove njihovu funkciju {recievecanvas} i prosledjuje joj isti objekat.
+Frontend:
+
+kontroler.invoke('guesstheword',pokusaj);
+
+kontroler.recievecanvas = function(data){
+	data -> canvas context
+};
