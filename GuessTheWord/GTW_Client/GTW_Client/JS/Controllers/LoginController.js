@@ -1,7 +1,7 @@
 ﻿app.controller("LoginController", [
-    "$scope", "postJSON", "$location",
+    "$scope", "postJSON", "$location", "$cookies",
     /*Ako hocemo da koristimo neki servis, moramo ga ovde navesti*/
-    function ($scope, postJSON, $location) {
+    function ($scope, postJSON, $location, $cookies) {
         
         /*Model: promenjiva user koja ima polja Username i Password. 
             Povezali smo je sa html-om pomocu ng-model */
@@ -30,6 +30,7 @@
 
                 if (result.data != {}) {
                     console.log("Uspesno ulogovan korisnik");
+                    $cookies.put("loggedUser", $scope.user.Username);
                     $location.path("/landingPage");
                     
                 } else {

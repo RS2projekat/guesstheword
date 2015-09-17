@@ -1,7 +1,7 @@
 ﻿/*Sve je slicno kao kod login kontrolera, osim sto se ovde pravi dodatna promenjiva user*/
 app.controller("RegisterController", [
-    "$scope", "postJSON", "$location", "$window",
-    function ($scope, postJSON, $location, $window) {
+    "$scope", "postJSON", "$location", "$window", "$cookies",
+    function ($scope, postJSON, $location, $window, $cookies) {
 
         $scope.user = {
             Username: "",
@@ -50,13 +50,11 @@ app.controller("RegisterController", [
                 if (result.data != {}) {
                     console.log("Uspesno registrovan korisnik");
 
-                    /*TO DO: Ovo treba promeniti da otvori profil tog korisnika gde su 
-                    njegovi poeni i medalje (ako ih bude bilo)*/
+                    $cookies.put("loggedUser", $scope.user.Username);
                     $location.path("/landingPage");
 
                 } else {/*TO DO: Zasto ovde ne ulazi? */
                     console.log("Korisnik nije registrovan!");
-
                 }
             })
         };

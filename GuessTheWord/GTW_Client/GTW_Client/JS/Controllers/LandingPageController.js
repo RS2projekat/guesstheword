@@ -1,5 +1,5 @@
-﻿app.controller("LandingPageController", ["$scope", "getJSON", "postJSON", "$location", "$window",
-    function ($scope, getJSON, postJSON, $location, $window) {
+﻿app.controller("LandingPageController", ["$scope", "getJSON", "postJSON", "$location", "$window", "$cookies",
+    function ($scope, getJSON, postJSON, $location, $window, $cookies) {
         getJSON.getJSON("http://localhost:43474/GTW/WeeklyScores/").then(function (result) {
             $scope.weeklyscore = result.data;
         })

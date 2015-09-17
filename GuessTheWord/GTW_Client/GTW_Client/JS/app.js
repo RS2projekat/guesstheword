@@ -1,4 +1,4 @@
-﻿var app = angular.module("myApp", ['ngRoute', 'xsockets']);
+﻿var app = angular.module("myApp", ['ngRoute', 'xsockets', 'ngCookies']);
 
 app.config(['$locationProvider', '$routeProvider', 'xsProvider',
     function ($locationProvider, $routeProvider, xsProvider) {

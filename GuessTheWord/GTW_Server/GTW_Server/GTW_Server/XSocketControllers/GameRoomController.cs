@@ -21,7 +21,8 @@ namespace GTW_Server.XSocketControllers
         {
             try 
             {
-                user = new User() { Id = u.Id, Username = u.Username, Role = u.Role };
+                //user = new User() { Id = u.Id, Username = u.Username, Role = u.Role };
+                user = new User() { Username = u.Username, Role = u.Role };
                 return true;
             }
             catch(Exception e)
