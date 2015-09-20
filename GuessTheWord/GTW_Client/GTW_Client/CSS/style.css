@@ -1,41 +1,67 @@
-﻿.roomContent{
-    background-color:white;
+﻿body{
+    background-color:rgb(236, 240, 241);
+}
+.roomContent{
+    background-color:rgb(236, 240, 241);
     position:relative;
     width:100vw;
     height:150vh;
 }
 .roomCanvas{
-    background-color:#bbcccc;
+    background-color:rgb(189, 195, 199);
     float:left;
     width:60vw;/*Viewport Width*/
     height:100vh;
 }
+
+.roomCanvas p{
+    text-align:center;
+    margin-top: 10px;
+}
+
 .roomTimer {
-    background-color:#927f92;
+    background-color:rgb(41, 128, 185);
     float:left;
     width:30vw;
     height:50vh;
 }
 .roomGuesses{
-    background-color:#347d7b;
+    background-color:rgb(41, 128, 185);
     float:left;
     width:30vw;
     height:50vh;
 }
 .roomChat{
-    background-color:#7fc7af;
+    background-color:rgb(52, 152, 219);
     position: absolute;
-    bottom:0px;
-    width:80vw;
-    height:20vh;
+    bottom: 15vh;
+    width: 90vw;
+    height: 30vh
 }
+.roomChat h1{
+    text-align: center;
+    color:white;
+}
+.roomChat label{
+    margin: 0 20px 20px 5%;
+    color:white;
+}
+.roomChat input{
+    margin: auto;
+    width:90%;
+}
+.roomChat button {
+        margin: 10px auto;
+        display: block;
+        width: 20vw;
 
-
+}
 /*TIMER*/
 .square {
   position: absolute;
-  width: 30vw;
+  width: 18vw;
   height: 50vh;
+  margin: 0 6vw;
 }
 svg {
   width: 30vw;
@@ -68,7 +94,7 @@ svg {
 /*Alati*/
 .canvasTools{
     float:left;
-    width:100px;
+    width: 120px;
     height:200vh;
 }
 .green{
@@ -165,7 +191,8 @@ svg {
     width:15px;
     height:15px;
     background-image:url('../Pictures/eraser.png');
-    
+    float: left;
+    margin: 0 5px 10px 10px;
 }
 #line{
     
@@ -177,7 +204,7 @@ svg {
 }
 #pencil{
 
-    margin: 2px 2px 2px 2px;
+    margin: 2px 2px 2px 17px;
     width:15px;
     height:15px;
     background-image:url('../Pictures/pen.png');
@@ -197,6 +224,25 @@ svg {
     width:15px;
     height:15px;
     background-image:url('../Pictures/circle.png');
+}
+
+#line, #pencil, #rect, #circle{
+    float:left;
+}
+
+#drawingStyleSize{
+    margin-top: 40px;
+}
+
+#drawingStyleSize label{
+    clear: both;
+    float: left;
+    margin: 0 5px 10px 15px;
+}
+
+#selectSize{
+    width: 50%;
+    height: 20px;
 }
 
 #boje1{
@@ -231,21 +277,67 @@ svg {
 }
 #borderColor{
     height:50px;
-    width:100px;
-   
+    width: 120px;
+    padding: 0 15px 60px 15px;
+    border-bottom: 1px dashed white;
 }
 #fillColor{
     float:left;
     height:50px;
-    width:100px;
+    width: 120px;
+    padding: 0 15px 60px 15px;
+    border-bottom: 1px dashed white;
 }
 
+#borderColor div, #fillColor div{   
+    border: 1px solid white;
+}
+
+#drawingTools{
+     padding: 0 0 15px 0px;
+     border-bottom: 1px dashed white;
+}
+#eraserTools{
+    padding: 10px 0 10px 0px;
+    border-bottom: 1px dashed white;
+}
+
+#canvasButton{
+    border-bottom: 1px dashed white;
+    padding: 0 0 10px 0px;
+}
 
 #guessesArea{
     height:150px;
     width:28vw;
+    margin: 10px auto;
+    display: block;
+}
+
+.roomGuesses p{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.roomGuesses button{
+    margin: 10px auto;
+    display: block;
+    width: 10vw;
 }
 
 #guessInput{
     width:28vw;
+    margin: auto;
+}
+
+#startButton {
+    margin: 0 25px 0 25px;
+}
+
+#undoButton, #redoButton {
+    margin: 10px 5px 0 5px;
+    padding: 3px 3px;
+    float: left;
 }
