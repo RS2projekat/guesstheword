@@ -1,6 +1,7 @@
 ﻿app.controller("gameroom", [
-    "$scope", "xs", "$cookies", "$location",
-    function ($scope, xs, $cookies, $location) {
+    "$scope", "xs", "$cookies", "$location", "$window",
+    function ($scope, xs, $cookies, $location, $window) {
+
             var controller = xs.controller("gameroom");
             
             var user = {
@@ -20,29 +21,27 @@
                 console.log("IN0");
                 controller.invoke("register", user);
             }
+            registerFunc();            
 
-            registerFunc();
-            
             controller.on("listinactiverooms", function (result) {
-
                 console.log("rezultat iz listinactiverooms: " + result[0].Name);
 
                 $scope.rooms = result;
                 //$scope.$apply();
             });
 
-            var listInactive = function ()
+            var listInactiveFunc = function ()
             {
                 console.log("IN1");
-                controller.invoke('listinactiverooms');
+                controller.invoke("listinactiverooms");
             }
-
-            listInactive();
-
+            listInactiveFunc();
+            
+            $scope.newRoom = "";
 
             $scope.addRoom = function () {
                 if ($scope.newRoom == "") {
-                    $window.alert("You must enter room name");
+                    $window.alert("You must enter room name.");
                     return;
                 }
 
@@ -52,39 +51,35 @@
                 };
 
                 controller.on("makenewroom", function (result) {
-                    
-                    console.log("rezultat: " + result);
+                    console.log("rezultat iz makenewroom: " + result);
 
                     $location.path("/gameRoom");
                 });
 
-                var addRoomFunc = function () {
+                var makeNewFunc = function ()
+                {
                     console.log("IN2");
-                    controller.invoke('makenewroom', room);
+                    controller.invoke("makenewroom", room);
                 }
-
-                addRoomFunc();
+                makeNewFunc();
             }
-
 
             $scope.enterRoom = function (roomIndex) {
                 var room = $scope.rooms[roomIndex];
 
                 controller.on("getintoroom", function (result) {
-
+                    console.log("room: " + room.Name);
                     console.log("rezultat iz geintoroom: " + result);
 
                     $location.path("/gameRoom");
-
                 });
 
-                var getIntoRoomFunc = function () {
+                var enterRoomFunc = function ()
+                {
                     console.log("IN3");
-                    console.log("room: " + room.Name);
-                    controller.invoke('getintoroom', room);
+                    controller.invoke("getintoroom", room);
                 }
-
-                getIntoRoomFunc();
+                enterRoomFunc();
             }
         }
 ]);

@@ -1,5 +1,7 @@
-﻿app.controller("GameController",
-    function ($scope, $window, $timeout) {
+﻿app.controller("GameRoomController", ["xs", "$cookies",
+    function ($scope, $window, $timeout, xs, $cookies) {
+
+        //var controller = xs.controller("GameRoomController");
 
         /*Deo za canvas*/
 
@@ -237,6 +239,31 @@
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 $scope.startTimer();
                 $scope.isDisabled = true;
+                
+                controller.on("startgame", function () {
+                    console.log("rec: " + val);
+                });
+
+                var startGameFunc = function () {
+                    console.log("u startGameFunc");
+                    controller.invoke("startgame", val);
+                }
+                startGameFunc();
+
+                var user = {
+                    Username: $cookies.get("loggedUser"),
+                    Role: "User"
+                };
+
+                controller.on("start", function () {
+                    console.log("ulogovani korisnik: " + user.Username);
+                });
+
+                var startFunc = function () {
+                    console.log("u startFunc");
+                    controller.invoke("start", user);
+                }
+                startFunc();
             }
         };
 
@@ -317,4 +344,7 @@
       /*  $scope.colorChanged = function(){
             $scope.canvasModel.color = $scope.colorInput;
         };*/
-    });
+
+
+    }
+]);
