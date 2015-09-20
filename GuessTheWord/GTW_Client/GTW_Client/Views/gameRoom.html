@@ -2,8 +2,8 @@
     <div ng-controller="GameRoomController">
         <div class="roomCanvas">
             <div class="canvasTools">
-                
-                    
+
+
                 <p>Border Color:</p>
                 <div id="borderColor">
                     <div id="boje1">
@@ -71,48 +71,56 @@
                         <div class="teget" ng-click="fillColor('#000033')"></div>
                     </div>
                 </div>
-                <br/>
-                <!--OVDE BI TREBALO DA NA CLICK OTVORI PALETU, I TAJ SKRIPT SIGURNO RADI, SAMO STO NE VIDI SKRIPT
-               <form>
-                    <input class="color" value="66ff00" />
-                </form>-->
-               
-                <p>Eraser</p>
-                <div id="white" ng-click="color('white')"></div>
-                <form name="rubberForm">
-                    <label for="rubberSize">Size: </label>
-                    <select id="rubberSize" ng-model="rubberSelect" ng-change="rubberChanged()">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="4">4</option>
-                        <option value="6">6</option>
-                        <option value="8">8</option>
-                        <option value="10">10</option>
-                        <option value="12">12</option>
-                    </select><br>
-                </form>
-                Drawing style
-                <div id="pencil" ng-click="drawingStyle('pencil')"></div>
-                <div id="line" ng-click="drawingStyle('line')"></div>
-                <div id="rect" ng-click="drawingStyle('rect')"></div>
-                <div id="circle" ng-click="drawingStyle('circle')"></div>
-
-                <form name="selectForm">
-                    <label for="selectSize">Size: </label>
-                    <select id="selectSize" ng-model="sizeSelect" ng-change="sizeChanged()">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="4">4</option>
-                        <option value="6">6</option>
-                        <option value="8">8</option>
-                        <option value="10">10</option>
-                        <option value="12">12</option>
-                    </select><br>
-                </form>
                 <br />
-                <button ng-click="startGame()" ng-disabled="isDisabled" class="btn btn-primary">START</button>
-                <button ng-click="undo()" ng-disabled="undoDisabled" class="btn btn-primary">UNDO</button>
-                <button ng-click="redo()" ng-disabled="redoDisabled" class="btn btn-primary">REDO</button>
+                <!--OVDE BI TREBALO DA NA CLICK OTVORI PALETU, I TAJ SKRIPT SIGURNO RADI, SAMO STO NE VIDI SKRIPT
+                <form>
+                     <input class="color" value="66ff00" />
+                 </form>-->
+                <div id="eraserTools">
+                    <p>Eraser</p>
+                    <div id="white" ng-click="color('white')"></div>
+                    <form name="rubberForm">
+                        <label for="rubberSize">Size: </label>
+                        <select id="rubberSize" ng-model="rubberSelect" ng-change="rubberChanged()">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                        </select><br>
+                    </form>
+                </div>
+                <div id="drawingTools">
+                    <p>Drawing style</p>
+                    <div id="pencil" ng-click="drawingStyle('pencil')"></div>
+                    <div id="line" ng-click="drawingStyle('line')"></div>
+                    <div id="rect" ng-click="drawingStyle('rect')"></div>
+                    <div id="circle" ng-click="drawingStyle('circle')"></div>
+
+                    <form name="selectForm" id="drawingStyleSize">
+                        <label for="selectSize">Size: </label>
+                        <select id="selectSize" ng-model="sizeSelect" ng-change="sizeChanged()">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                            <option value="10">10</option>
+                            <option value="12">12</option>
+                        </select><br>
+                    </form>
+                </div>
+
+                <br />
+                <div id="canvasButton">
+                    <button id="startButton" ng-click="startGame()" ng-disabled="isDisabled" class="btn btn-primary">START</button>
+                </div>
+
+                <button id="undoButton" ng-click="undo()" ng-disabled="undoDisabled" class="btn btn-primary">UNDO</button>
+                <button id="redoButton" ng-click="redo()" ng-disabled="redoDisabled" class="btn btn-primary">REDO</button>
+
 
 
             </div>
@@ -128,7 +136,7 @@
 
             <div class="square">
                 <svg>
-                    <circle cx="120" cy="120" r="100" stroke="green" stroke-width="4" fill="white" />
+                    <circle cx="120" cy="120" r="100" stroke="rgb(230, 126, 34)" stroke-width="4" fill="white" />
                     <line ng-model="angle" x1="120" y1="120" x2="120" y2="20" style="stroke:rgb(255,0,0); stroke-width:2;" transform="rotate({{angle}} 120 120)" />
 
                 </svg>
@@ -138,15 +146,16 @@
         </div>
     </div>
     <div class="roomGuesses">
-        <textarea id="guessesArea"></textarea>
-        <p>Guess</p>
+        <textarea class="form-control" id="guessesArea"></textarea>
+        <p>Make a guess</p>
         <input id="guessInput" type="text" class="form-control" id="focusedInput" ng-model="guessMessage" />
+        <button ng-click="sendChatMessage()" class="btn btn-primary">Send</button>
     </div>
     <div class="roomChat" ng-controller="ChatController">
         <h1>Simple chat</h1>
         <label>Your message</label>
         <input type="text" class="form-control" id="focusedInput" ng-model="chatMessage" />
-        <button ng-click="sendChatMessage()" class="btn btn-primary">SAY</button>
+        <button ng-click="sendChatMessage()" class="btn btn-primary">Send</button>
         <div ng-repeat="item in chatMessages" id="chatMessages">
             <p>
                 <span>{{item.created | date:'shortTime'}}</span>
@@ -155,5 +164,5 @@
         </div>
     </div>
 
-    
+
 </div>
