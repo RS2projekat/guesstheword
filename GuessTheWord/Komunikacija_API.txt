@@ -2,10 +2,10 @@ API za komunikaciju koja se odnosi na GameRoom
 
 Stringove koje treba bukvalno prekopirati i koristiti kao takve cu pisati izmedju viticastih zagrada {}.
 
-Pre svega, kada se klijent uloguje, potrebno je napraviti nov XSocket kontroler na frontendu (kao onaj za chat) pod nazivom {gameroom}. 
+Pre svega, kada se klijent uloguje, potrebno je napraviti nov XSocket kontroler na frontendu (kao onaj za chat) pod nazivom {gameroominactive}.  
 Ukoliko to ne uspe, mozemo raditi i sa ovim jadnim {chat} kontrolerom, strpacu svu logiku u njega na bekendu.
 
-- Kada se taj {gameroom} kontroler napravi, potrebno je pozvati funkciju tog kontrolera {register} i proslediti joj objekat User-a tj. korisnika.
+- Kada se taj {gameroominactive} kontroler napravi, potrebno je pozvati funkciju tog kontrolera {register} i proslediti joj objekat User-a tj. korisnika.
 Ta funkcija vraca bool uspelo/nije uspelo.
 Na frontendu se to radi ovako:
 
@@ -24,6 +24,8 @@ Isto se rukuje sa tim kao kod druge prethodne stavke.
 - Ukoliko klijent zeli da udje u neku sobu to radi tako sto pozove funkciju kontrolera {getintoroom} i prosledi joj objekat GameRoom.
 Ta funkcija vraca bool usao/nije usao.
 Isto se rukuje sa tim kao kod trece prethodne stavke.
+
+Kada klijent udje u sobu, pravi se nov XSocket kontoler pod nazivom {gameroomactive}. U nastavku su opisane njegove funkcije.
 
 - Ukoliko klijent zeli da zapocne igru (onaj koji crta to moze da uradi) to se radi tako sto se pozove funkcija kontrolera {startgame} i prosledi joj se rec.
 Ta funkcija poziva na svim klijentima u sobi funkciju {start} i prosledjuje joj objekat User-a koji je zapoceo igru.

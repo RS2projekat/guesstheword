@@ -205,7 +205,8 @@
     <Compile Include="Services\RoomServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="XSocketControllers\ChatController.cs" />
-    <Compile Include="XSocketControllers\GameRoomController.cs" />
+    <Compile Include="XSocketControllers\GameRoomInactiveController.cs" />
+    <Compile Include="XSocketControllers\GameRoomActiveController.cs" />
     <Compile Include="XSocketControllers\GlobalController.cs" />
     <Compile Include="DAL\Models\GameRoom.cs" />
     <Compile Include="DAL\Models\User.cs" />
