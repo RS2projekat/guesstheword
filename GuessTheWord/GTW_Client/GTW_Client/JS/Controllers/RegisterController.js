@@ -41,7 +41,8 @@ app.controller("RegisterController", [
             /*Ovo pravimo posebnu promenjivu koju saljemo jer ona gore ima polje viska, a server ocekuje promenjivu sa samo 2 polja: Username i Password*/
             var user = {
                 Username: $scope.user.Username,
-                Password: $scope.user.Password
+                Password: $scope.user.Password,
+                Role: "User"
             };
 
             postJSON.postJSON("http://localhost:43474/GTW/Users/Register", user).then(function (result) {
@@ -50,7 +51,7 @@ app.controller("RegisterController", [
                 if (result.data != {}) {
                     console.log("Uspesno registrovan korisnik");
 
-                    $cookies.put("loggedUser", $scope.user.Username);
+                    $cookies.put("loggedUser", user.Username);
                     $location.path("/landingPage");
 
                 } else {/*TO DO: Zasto ovde ne ulazi? */

@@ -50,6 +50,8 @@
                     Date: new Date()
                 };
 
+                $cookies.putObject("activeRoom", room);
+
                 controller.on("makenewroom", function (result) {
                     console.log("rezultat iz makenewroom: " + result);
 
@@ -66,6 +68,8 @@
 
             $scope.enterRoom = function (roomIndex) {
                 var room = $scope.rooms[roomIndex];
+
+                $cookies.putObject("activeRoom", room);
 
                 controller.on("getintoroom", function (result) {
                     console.log("room: " + room.Name);

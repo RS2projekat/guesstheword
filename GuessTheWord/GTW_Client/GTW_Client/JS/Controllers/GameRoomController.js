@@ -4,6 +4,28 @@
 
         var controller = xs.controller("gameroomactive");
 
+        var user = {
+            Username: $cookies.get("loggedUser"),
+            Role: "User"
+        };
+
+        var activeRoom = $cookies.getObject("activeRoom");
+        
+        console.log("activeRoom: " + activeRoom.Name);
+
+        controller.on("register", function (result) {
+            console.log("rezultat iz register: " + result);
+
+            if (result == false)
+                return;
+        });
+
+        var registerFunc = function () {
+            console.log("u registerFunc");
+            controller.invoke("register", user, activeRoom);
+        }
+        registerFunc();
+
         /*Deo za canvas*/
 
         var canvas = document.getElementById('mainCanvas');
@@ -250,12 +272,7 @@
                     controller.invoke("startgame", val);
                 }
                 startGameFunc();
-
-                var user = {
-                    Username: $cookies.get("loggedUser"),
-                    Role: "User"
-                };
-
+                                
                 controller.on("start", function () {
                     console.log("ulogovani korisnik: " + user.Username);
                 });
@@ -330,11 +347,23 @@
             }
             else {
                 $scope.isDisabled = false;
+
+                controller.on("endgame", function () {
+                    console.log("zavrsena igra");
+                });
+
+                var endGameFunc = function () {
+                    console.log("u endGameFunc");
+                    controller.invoke("endgame");
+                }
+                endGameFunc();
+
+                //var endFunc = function () {
+                //    console.log("u endFunc");
+                //    controller.invoke("end");
+                //}
+                //endFunc();
             }
-
-
-
-
         };
         $scope.startTimer = function () {
             $scope.sec = 1;
@@ -347,5 +376,10 @@
         };*/
 
 
+        controller.on("end", function (result) {
+            var user = result;
+
+            console.log("u end; user je: " + user.Username);
+        });
     }
 ]);

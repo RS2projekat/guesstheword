@@ -25,11 +25,13 @@
             /*Poziva se servis. U servisu imam funkciju postJSON. Svaki put kada hocemo nesto da posaljemo na server treba da koristimo taj servis.
                 Servisu prosledjujemo lokaciju na serveru (sve lokacije su u fajlu rutiranje.txt)
                 Drugi argument je ono sto saljemo*/
+            
             postJSON.postJSON("http://localhost:43474/GTW/Users/Login", $scope.user).then(function (result) {
                 console.log(result.data);
 
                 if (result.data != {}) {
                     console.log("Uspesno ulogovan korisnik");
+
                     $cookies.put("loggedUser", $scope.user.Username);
                     $location.path("/landingPage");
                     
