@@ -1,6 +1,6 @@
 ﻿app.controller("GameRoomController", [
-    "xs", "$cookies", "$window", "$scope",
-    function ($scope, $window, $timeout, xs, $cookies) {
+    "$scope", "xs", "$cookies", "$window", "$timeout",
+    function ($scope, xs, $cookies, $window, $timeout) {
 
         var controller = xs.controller("gameroomactive");
 

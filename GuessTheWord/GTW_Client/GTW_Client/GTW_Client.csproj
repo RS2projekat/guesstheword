@@ -138,7 +138,6 @@
     <Content Include="JS\angular.min.js" />
     <Content Include="JS\Controllers\ControllerExample.js" />
     <Content Include="JS\Controllers\GameRoomController.js" />
-    <Content Include="JS\Controllers\gameroom.js" />
     <Content Include="JS\Controllers\LandingPageController.js" />
     <Content Include="JS\Service\getJSON.js" />
     <Content Include="JS\Service\getUser.js" />

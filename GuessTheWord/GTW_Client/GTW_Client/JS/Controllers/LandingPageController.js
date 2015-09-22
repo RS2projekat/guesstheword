@@ -1,43 +1,85 @@
-﻿app.controller("LandingPageController", ["$scope", "getJSON", "postJSON", "$location", "$window", "$cookies",
-    function ($scope, getJSON, postJSON, $location, $window, $cookies) {
-        getJSON.getJSON("http://localhost:43474/GTW/WeeklyScores/").then(function (result) {
-            $scope.weeklyscore = result.data;
-        })
-        
-        getJSON.getJSON("http://localhost:43474/GTW/OverallScores/").then(function (result) {
-            $scope.overallscore = result.data;
-        })
+﻿app.controller("LandingPageController", [
+    "$scope", "xs", "$cookies", "$location", "$window",
+    function ($scope, xs, $cookies, $location, $window) {
 
-        getJSON.getJSON("http://localhost:43474/GTW/GameRooms/").then(function (result) {
-            $scope.rooms = result.data;
-        })
-
-        // potrebna informacija o ulogovanom korisniku
-        //getJSON.getJSON("http://localhost:43474/GTW/OverallScores/", user).then(function (result) {
-        //    $scope.myScores = result.data;
-        //})
-        
-        $scope.addRoom = function()
-        {
-            if ($scope.newRoom.Name == "")
-            {
-                $window.alert("You must enter room name");
-                console.log($scope.newRoom.Name);
-                return;
-            }
-
-            var room = {
-                Name: $scope.newRoom.Name,
-                Date: new Date()
+            var controller = xs.controller("gameroominactive");
+            
+            var user = {
+                Username: $cookies.get("loggedUser"),
+                Role: "User"
             };
 
-            postJSON.postJSON("http://localhost:43474/GTW/GameRooms/", room).then(function (result) {
-                console.log(result.data);
-            })
+            controller.on("register", function (result) {
+                console.log("rezultat iz register: " + result);
 
-            getJSON.getJSON("http://localhost:43474/GTW/GameRooms/").then(function (result) {
-                $scope.rooms = result.data;
-            })
+                if (result == false)
+                    return;
+            });
+            
+            var registerFunc = function ()
+            {
+                console.log("IN0");
+                controller.invoke("register", user);
+            }
+            registerFunc();            
+
+            controller.on("listinactiverooms", function (result) {
+                console.log("rezultat iz listinactiverooms: " + result[0].Name);
+
+                $scope.rooms = result;
+                //$scope.$apply();
+            });
+
+            var listInactiveFunc = function ()
+            {
+                console.log("IN1");
+                controller.invoke("listinactiverooms");
+            }
+            listInactiveFunc();
+            
+            $scope.newRoom = "";
+
+            $scope.addRoom = function () {
+                if ($scope.newRoom == "") {
+                    $window.alert("You must enter room name.");
+                    return;
+                }
+
+                var room = {
+                    Name: $scope.newRoom,
+                    Date: new Date()
+                };
+
+                controller.on("makenewroom", function (result) {
+                    console.log("rezultat iz makenewroom: " + result);
+
+                    $location.path("/gameRoom");
+                });
+
+                var makeNewFunc = function ()
+                {
+                    console.log("IN2");
+                    controller.invoke("makenewroom", room);
+                }
+                makeNewFunc();
+            }
+
+            $scope.enterRoom = function (roomIndex) {
+                var room = $scope.rooms[roomIndex];
+
+                controller.on("getintoroom", function (result) {
+                    console.log("room: " + room.Name);
+                    console.log("rezultat iz geintoroom: " + result);
+
+                    $location.path("/gameRoom");
+                });
+
+                var enterRoomFunc = function ()
+                {
+                    console.log("IN3");
+                    controller.invoke("getintoroom", room);
+                }
+                enterRoomFunc();
+            }
         }
-    }
 ]);
