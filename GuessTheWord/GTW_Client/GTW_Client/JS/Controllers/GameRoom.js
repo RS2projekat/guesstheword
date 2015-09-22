@@ -2,7 +2,7 @@
     "$scope", "xs", "$cookies", "$location", "$window",
     function ($scope, xs, $cookies, $location, $window) {
 
-            var controller = xs.controller("gameroom");
+            var controller = xs.controller("gameroominactive");
             
             var user = {
                 Username: $cookies.get("loggedUser"),

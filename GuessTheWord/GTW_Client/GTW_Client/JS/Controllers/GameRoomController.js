@@ -1,7 +1,8 @@
-﻿app.controller("GameRoomController", ["xs", "$cookies",
+﻿app.controller("GameRoomController", [
+    "xs", "$cookies", "$window", "$scope",
     function ($scope, $window, $timeout, xs, $cookies) {
 
-        //var controller = xs.controller("GameRoomController");
+        var controller = xs.controller("gameroomactive");
 
         /*Deo za canvas*/
 
