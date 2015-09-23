@@ -201,7 +201,8 @@
     <Compile Include="Migrations\201509161018203_firstMigration.Designer.cs">
       <DependentUpon>201509161018203_firstMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserMessage.cs" />
+    <Compile Include="Views\UserGameRoom.cs" />
+    <Compile Include="Views\UserMessage.cs" />
     <Compile Include="Services\RoomServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="XSocketControllers\ChatController.cs" />

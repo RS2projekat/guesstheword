@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using GTW_Server.DAL.Models;
 
-namespace GTW_Server.Models
+namespace GTW_Server.Views
 {
     public class UserMessage
     {

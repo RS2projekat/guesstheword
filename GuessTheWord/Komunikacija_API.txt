@@ -25,9 +25,11 @@ Isto se rukuje sa tim kao kod druge prethodne stavke.
 Ta funkcija vraca bool usao/nije usao.
 Isto se rukuje sa tim kao kod trece prethodne stavke.
 
-Kada klijent udje u sobu, pravi se nov XSocket kontoler pod nazivom {gameroomactive}. U nastavku su opisane njegove funkcije.
+Kada klijent udje u sobu, pravi se nov XSocket kontoler pod nazivom {gameroomactive}. 
 
-- Ukoliko klijent zeli da zapocne igru (onaj koji crta to moze da uradi) to se radi tako sto se pozove funkcija kontrolera {startgame} i prosledi joj se rec.
+- Potrebno je pozvati funkciju  {entertheroom} koja prima dva parametra User i GameRoom. Ukoliko je klijent uspesno usao u sobu, vraca se true, inace se vraca false.
+
+- Ukoliko klijent zeli da zapocne igru (onaj  koji crta to moze da uradi) to se radi tako sto se pozove funkcija kontrolera {startgame} i prosledi joj se rec.
 Ta funkcija poziva na svim klijentima u sobi funkciju {start} i prosledjuje joj objekat User-a koji je zapoceo igru.
 Znaci ovako, prvo se pozove funkcija kontrolera:
 

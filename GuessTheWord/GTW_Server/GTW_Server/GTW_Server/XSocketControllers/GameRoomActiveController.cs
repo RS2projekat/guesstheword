@@ -8,7 +8,7 @@ using XSockets.Core.Common.Socket.Event.Interface;
 using XSockets.Plugin.Framework.Attributes;
 using GTW_Server.Services;
 using GTW_Server.DAL.Models;
-using GTW_Server.Models;
+using GTW_Server.Views;
 
 namespace GTW_Server.XSocketControllers
 {
@@ -17,6 +17,19 @@ namespace GTW_Server.XSocketControllers
         User user { get; set; }
         GameRoom gameRoom { get; set; }
 
+        public bool enterTheRoom(User us, GameRoom gr)
+        {
+            try
+            {
+                user = new User() { Username = us.Username, Id = us.Id, Role = us.Role };
+                gameRoom = new GameRoom() { Id = gr.Id, Date = gr.Date, Name = gr.Name, PainterId = gr.PainterId, Users = gr.Users, WinnerId = gr.WinnerId, Word = gr.Word };
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         public void chatMessage(IMessage message)
         {
             this.InvokeTo(c => c.gameRoom.Id == gameRoom.Id, new UserMessage() { message = message.Data, user = user}, "chatmessage");
