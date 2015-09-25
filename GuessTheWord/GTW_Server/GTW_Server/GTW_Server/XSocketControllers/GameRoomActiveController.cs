@@ -17,12 +17,12 @@ namespace GTW_Server.XSocketControllers
         User user { get; set; }
         GameRoom gameRoom { get; set; }
 
-        public bool enterTheRoom(User us, GameRoom gr)
+        public bool registerUserRoom(UserGameRoom ugr)
         {
             try
             {
-                user = new User() { Username = us.Username, Id = us.Id, Role = us.Role };
-                gameRoom = new GameRoom() { Id = gr.Id, Date = gr.Date, Name = gr.Name, PainterId = gr.PainterId, Users = gr.Users, WinnerId = gr.WinnerId, Word = gr.Word };
+                user = new User() { Username = ugr.user.Username, Id = ugr.user.Id, Role = ugr.user.Role };
+                gameRoom = new GameRoom() {Id = ugr.gameRoom.Id, Date = ugr.gameRoom.Date, Name = ugr.gameRoom.Name, PainterId = ugr.gameRoom.PainterId, Users = ugr.gameRoom.Users };
                 return true;
             }
             catch (Exception e)
@@ -45,7 +45,7 @@ namespace GTW_Server.XSocketControllers
         public void endGame()
         {
             ServerContext.Instance.roomServices.addRoom(gameRoom);
-            this.InvokeTo(c => c.gameRoom.Id == gameRoom.Id, user, "end");
+            this.InvokeTo(c => c.gameRoom.Id == gameRoom.Id, gameRoom, "end");
         }
 
         public void sendCanvas(IMessage message)
@@ -62,7 +62,7 @@ namespace GTW_Server.XSocketControllers
                 ServerContext.Instance.roomServices.addRoom(gameRoom);
 
 
-                this.InvokeTo(c => c.gameRoom.Id == gameRoom.Id, user, "win");
+                this.InvokeTo(c => c.gameRoom.Id == gameRoom.Id, gameRoom, "win");
 
                 gameRoom = null;
             }
@@ -72,6 +72,20 @@ namespace GTW_Server.XSocketControllers
             }
         }
 
+        public bool setTheWord(IMessage message)
+        {
+            try
+            {
+
+                gameRoom.Word = message.ToString();
+                return true;
+        
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
 
     }
 }

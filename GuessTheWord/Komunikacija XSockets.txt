@@ -27,7 +27,7 @@ Isto se rukuje sa tim kao kod trece prethodne stavke.
 
 Kada klijent udje u sobu, pravi se nov XSocket kontoler pod nazivom {gameroomactive}. 
 
-- Potrebno je pozvati funkciju  {entertheroom} koja prima dva parametra User i GameRoom. Ukoliko je klijent uspesno usao u sobu, vraca se true, inace se vraca false.
+- Potrebno je pozvati funkciju  {registeruserroom} koja prima objekat {User{}, GameRoom{} } (JSON: { user : {Username : Pera, Role : Admin}, gameRoom : { Name : Soba1}}). Ukoliko je klijent uspesno usao u sobu, vraca se true, inace se vraca false.
 
 - Ukoliko klijent zeli da zapocne igru (onaj  koji crta to moze da uradi) to se radi tako sto se pozove funkcija kontrolera {startgame} i prosledi joj se rec.
 Ta funkcija poziva na svim klijentima u sobi funkciju {start} i prosledjuje joj objekat User-a koji je zapoceo igru.
@@ -55,7 +55,7 @@ kontroler.invoke('guesstheword',pokusaj);
 A funkcije win i wrong:
 
 kontroler.win = function(data) {
-	data -> user koji je pogodio
+	data -> objekat GameRoom koji sadrzi informaciju o igri
 };
 
 kontroler.wrong = function(data) {
