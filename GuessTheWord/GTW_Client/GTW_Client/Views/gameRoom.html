@@ -2,8 +2,6 @@
     <div ng-controller="GameRoomController">
         <div class="roomCanvas">
             <div class="canvasTools">
-
-
                 <p>Border Color:</p>
                 <div id="borderColor">
                     <div id="boje1">
@@ -146,10 +144,10 @@
         </div>
     </div>
     <div class="roomGuesses">
-        <textarea class="form-control" id="guessesArea"></textarea>
+        <textarea class="form-control" id="guessesArea" ng-model="guesses"></textarea>
         <p>Make a guess</p>
-        <input id="guessInput" type="text" class="form-control" id="focusedInput" ng-model="guessMessage" />
-        <button ng-click="sendChatMessage()" class="btn btn-primary">Send</button>
+        <input id="guessInput" type="text" class="form-control" ng-model="guessMessage" />
+        <button ng-click="makeGuess()" class="btn btn-primary">Guess</button>
     </div>
     <div class="roomChat" ng-controller="ChatController">
         <h1>Simple chat</h1>

@@ -3,28 +3,33 @@
     function ($scope, xs, $cookies, $window, $timeout) {
 
         var controller = xs.controller("gameroomactive");
-
-        var user = {
+        
+        var userReg = {
             Username: $cookies.get("loggedUser"),
-            Role: "User"
+            Role: "Admin"
         };
 
-        var activeRoom = $cookies.getObject("activeRoom");
-        
-        console.log("activeRoom: " + activeRoom.Name);
+        var roomReg = $cookies.getObject("activeRoom");
+                
+        console.log("roomReg: " + roomReg.Name);
 
-        controller.on("register", function (result) {
-            console.log("rezultat iz register: " + result);
+        var userRoom = {
+            user: userReg,
+            gameRoom: roomReg
+        };
+
+        controller.on("registeruserroom", function (result) {
+            console.log("rezultat iz registerUR: " + result);
 
             if (result == false)
                 return;
         });
 
-        var registerFunc = function () {
-            console.log("u registerFunc");
-            controller.invoke("register", user, activeRoom);
+        var registerURFunc = function () {
+            console.log("u registerURFunc");
+            controller.invoke("registeruserroom", userRoom);
         }
-        registerFunc();
+        registerURFunc();
 
         /*Deo za canvas*/
 
@@ -262,26 +267,17 @@
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 $scope.startTimer();
                 $scope.isDisabled = true;
-                
-                controller.on("startgame", function () {
-                    console.log("rec: " + val);
+                                
+                controller.on("start", function (retUser) {
+                    console.log("korisnik koji je zapoceo igru: " + retUser.Username);
                 });
 
                 var startGameFunc = function () {
                     console.log("u startGameFunc");
+                    controller.invoke("settheword", val);
                     controller.invoke("startgame", val);
                 }
                 startGameFunc();
-                                
-                controller.on("start", function () {
-                    console.log("ulogovani korisnik: " + user.Username);
-                });
-
-                var startFunc = function () {
-                    console.log("u startFunc");
-                    controller.invoke("start", user);
-                }
-                startFunc();
             }
         };
 
@@ -348,21 +344,11 @@
             else {
                 $scope.isDisabled = false;
 
-                controller.on("endgame", function () {
-                    console.log("zavrsena igra");
-                });
-
                 var endGameFunc = function () {
                     console.log("u endGameFunc");
                     controller.invoke("endgame");
                 }
                 endGameFunc();
-
-                //var endFunc = function () {
-                //    console.log("u endFunc");
-                //    controller.invoke("end");
-                //}
-                //endFunc();
             }
         };
         $scope.startTimer = function () {
@@ -375,11 +361,26 @@
             $scope.canvasModel.color = $scope.colorInput;
         };*/
 
-
-        controller.on("end", function (result) {
-            var user = result;
-
-            console.log("u end; user je: " + user.Username);
+        controller.on("end", function (retGameRoom) {
+            console.log("zavrsena igra");
+            console.log("end soba: " + retGameRoom.Name);
         });
+
+        controller.on("win", function (retGameRoom) {
+            console.log("u win; retGameRoom je: " + retGameRoom.Name);
+        });
+
+        controller.on("wrong", function (userMessage) {
+            console.log("u wrong");
+            console.log("message: " + userMessage.message);
+            console.log("user: " + userMessage.user);
+        });
+
+        $scope.makeGuess = function () {
+            console.log("u makeGuessFunc");
+            console.log("guessMessage je: " + $scope.guessMessage);
+            $scope.guesses = $scope.guesses + "\n" + $scope.guessMessage;
+            controller.invoke("guesstheword", $scope.guessMessage);
+        }
     }
 ]);
