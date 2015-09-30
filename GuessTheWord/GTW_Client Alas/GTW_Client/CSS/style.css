@@ -1,0 +1,339 @@
+﻿.roomContent{
+    background-color:rgb(236, 240, 241);
+    position:relative;
+    width:100vw;
+    height:150vh;
+}
+.roomCanvas{
+    background-color:rgb(189, 195, 199);
+    float:left;
+    width:60vw;/*Viewport Width*/
+    height:100vh;
+}
+.roomCanvas p{
+    text-align:center;
+    margin-top: 10px;
+}
+.roomTimer {
+    background-color:rgb(41, 128, 185);
+    float:left;
+    width:30vw;
+    height:50vh;
+}
+.roomGuesses{
+    background-color:rgb(41, 128, 185);
+    float:left;
+    width:30vw;
+    height:50vh;
+}
+.roomChat{
+    background-color:rgb(52, 152, 219);
+    position: absolute;
+    bottom:15vh;
+    width:90vw;
+    height:30vh;
+}
+.roomChat h1{
+    text-align: center;
+    color:white;
+}
+.roomChat label{
+    margin: 0 20px 20px 5%;
+    color:white;
+}
+.roomChat input{
+    margin: auto;
+    width:90%;
+}
+.roomChat button{
+    margin: 10px auto;
+    display: block;
+    width: 20vw;
+}
+/*TIMER*/
+.square {
+  position: absolute;
+  width: 18vw;
+  height: 50vh;
+  margin: 0 6vw;
+}
+svg {
+  width: 30vw;
+  height: 50vh;
+}
+
+/*CANVAS*/
+#canvasContainer{
+    float: left;
+    width:40vw;
+    height:100vh;
+    position:relative;
+}
+
+ #imageView{
+    border: 2px #c3c3c3 solid;
+    width:40vw;
+    height:100vh;
+    background-color:white;
+    
+ }
+#mainCanvas{
+    border: 2px #c3c3c3 solid;
+    width:40vw;
+    height:100vh;
+    background-color:transparent;
+    position:absolute;
+    top: 0; right: 0;
+}
+/*Alati*/
+.canvasTools{
+    float:left;
+    width:120px;
+    height:200vh;
+}
+.green{
+    width:15px;
+    height:15px;
+    background:green;
+}
+.orange{
+    width:15px;
+    height:15px;
+    background:orange;
+}
+.blue{
+    width:15px;
+    height:15px;
+    background:blue;
+}
+.yellow{
+    width:15px;
+    height:15px;
+    background:yellow;
+}
+.red{
+    width:15px;
+    height:15px;
+    background:red;
+}
+.black{
+    width:15px;
+    height:15px;
+    background:black;
+}
+.rose{
+    width:15px;
+    height:15px;
+    background:#FF0066;
+}
+.oker{
+    width:15px;
+    height:15px;
+    background:#CC9900;
+}
+.ljubicasto{
+    width:15px;
+    height:15px;
+    background:#9900CC;
+}
+.bordo{
+    width:15px;
+    height:15px;
+    background:#660000;
+}
+.trava{
+    width:15px;
+    height:15px;
+    background:#003300;
+}
+.tirkizno{
+    width:15px;
+    height:15px;
+    background:#00CC99;
+}
+.green2{
+    width:15px;
+    height:15px;
+    background:#00FF00;
+}
+.ljubicasto2{
+    width:15px;
+    height:15px;
+    background:#660033;
+}
+.rose2{
+    width:15px;
+    height:15px;
+    background:#FF0066;
+}
+.belo{
+    width:15px;
+    height:15px;
+    background:#FFFFFF;
+}
+.orange2{
+    width:15px;
+    height:15px;
+    background:#FF3300;
+}
+.teget{
+    width:15px;
+    height:15px;
+    background:#000033;
+}
+#white{
+    width:15px;
+    height:15px;
+    background-image:url('../Pictures/eraser.png');
+    float: left;
+    margin: 0 5px 10px 10px;
+}
+#line{
+    
+    margin: 2px 2px 2px 2px;
+    width:16px;
+    height:17px;
+    background-image:url('../Pictures/line.png');
+   
+}
+#pencil{
+
+    margin: 2px 2px 2px 17px;
+    width:15px;
+    height:15px;
+    background-image:url('../Pictures/pen.png');
+   
+}
+#rect{
+    
+    margin: 2px 2px 2px 2px;
+    width:15px;
+    height:15px;
+    background-image:url('../Pictures/rect.png');
+
+}
+#circle{
+    
+    margin: 2px 2px 2px 2px;
+    width:15px;
+    height:15px;
+    background-image:url('../Pictures/circle.png');
+}
+
+#line, #pencil, #rect, #circle{
+    float:left;
+}
+
+#drawingStyleSize{
+    margin-top: 40px;
+}
+
+#selectSize{
+    width: 50%;
+    height: 20px;
+}
+
+#boje1{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje2{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje3{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje4{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje5{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#boje6{
+    width:15px;
+    height:45px;
+    float:left;
+}
+#borderColor{
+    height:50px;
+    width:120px;
+    padding: 0 15px 60px 15px;
+    border-bottom: 1px dashed white;   
+}
+#fillColor{
+    float:left;
+    height:50px;
+    width:120px;
+    padding: 0 15px 60px 15px;
+    border-bottom: 1px dashed white;
+}
+
+#borderColor div, #fillColor div{
+    border: 1px solid white;
+}
+
+#drawingTools{
+    padding: 0 0 15px 0px;
+    border-bottom: 1px dashed white;
+}
+#eraserTools{
+    padding: 10px 0 10px 0px;
+    border-bottom: 1px dashed white;
+}
+
+#canvasButton{
+    border-bottom: 1px dashed white;
+    padding: 0 0 10px 0px;
+}
+
+#guessesArea{
+    height:150px;
+    width:28vw;
+    margin: 10px auto;
+    display: block;
+}
+
+.roomGuesses p{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.roomGuesses button{
+    margin: 10px auto;
+    display: block;
+    width: 10vw;
+}
+
+#guessInput{
+    width:28vw;
+    margin: auto;
+}
+
+#startButton {
+    margin: 0 25px 0 25px;
+}
+
+#undoButton, #redoButton {
+    margin: 10px 5px 0px 5px;
+    padding: 3px 3px;
+    float:left;
+}
+
+#addRoom {
+    border-top: 2px solid #c4e3f3;
+    margin-top: 20vh;
+    -webkit-box-shadow: 0px -2px 5px 10px rgba(196, 227, 243, 0.41);
+    -moz-box-shadow:    0px -2px 5px 1px rgba(196, 227, 243, 0.41);
+    box-shadow:         0px -2px 5px 1px rgba(196, 227, 243, 0.41);
+}

@@ -23,7 +23,7 @@ app.config(['$locationProvider', '$routeProvider', 'xsProvider',
 
         /*Ovo je deo za rad sa xsocketima*/
         //xSocketi - konekcija
-        xsProvider.url = "ws://localhost:43474/";
+        xsProvider.url = "ws://guesstheword-1.apphb.com/";
 
         //ovde navode kontroleri sa servera za xsockete
         xsProvider.controllers = ["chat", "gameroominactive", "gameroomactive"];

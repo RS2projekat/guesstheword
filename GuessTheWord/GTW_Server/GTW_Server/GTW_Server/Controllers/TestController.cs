@@ -12,9 +12,10 @@ namespace GTW_Server.Controllers
     public class TestController : ApiController
     {
         [HttpGet]
-        [Route("GTW/Test/")]
-        public void Test()
+        [Route("GTW/Test/{id}")]
+        public int Test(int id)
         {
+			return id;
         }
 
     }

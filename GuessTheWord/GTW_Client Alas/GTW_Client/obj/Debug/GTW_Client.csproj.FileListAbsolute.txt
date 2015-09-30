@@ -1,0 +1,83 @@
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\GTW_Client.dll.config
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\GTW_Client.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\GTW_Client.pdb
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Microsoft.Owin.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Newtonsoft.Json.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Owin.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Serilog.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Serilog.FullNetFx.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Controllers.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Core.Common.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Core.Communication.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Core.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.CustomProtocol.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Enterprise.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Logger.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Owin.Host.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Plugin.Framework.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Protocol.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Serialization.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Server.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Microsoft.Owin.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Newtonsoft.Json.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Serilog.pdb
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Serilog.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Serilog.FullNetFx.pdb
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\Serilog.FullNetFx.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Controllers.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Core.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Core.Common.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Core.Communication.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.CustomProtocol.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Enterprise.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Owin.Host.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Plugin.Framework.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Protocol.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Serialization.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\bin\XSockets.Server.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\obj\Debug\GTW_Client.csprojResolveAssemblyReference.cache
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\obj\Debug\GTW_Client.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client\GTW_Client\obj\Debug\GTW_Client.pdb
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\GTW_Client.dll.config
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\GTW_Client.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\GTW_Client.pdb
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Microsoft.Owin.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Newtonsoft.Json.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Owin.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Serilog.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Serilog.FullNetFx.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Controllers.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Core.Common.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Core.Communication.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Core.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.CustomProtocol.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Enterprise.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Logger.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Owin.Host.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Plugin.Framework.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Protocol.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Serialization.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Server.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Microsoft.Owin.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Newtonsoft.Json.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Serilog.pdb
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Serilog.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Serilog.FullNetFx.pdb
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\Serilog.FullNetFx.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Controllers.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Core.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Core.Common.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Core.Communication.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.CustomProtocol.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Enterprise.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Owin.Host.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Plugin.Framework.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Protocol.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Serialization.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\bin\XSockets.Server.xml
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\obj\Debug\GTW_Client.dll
+C:\Users\brana\Desktop\branislava\Branislava\GuessTheWord\guesstheword\GuessTheWord\GTW_Client Alas\GTW_Client\obj\Debug\GTW_Client.pdb
