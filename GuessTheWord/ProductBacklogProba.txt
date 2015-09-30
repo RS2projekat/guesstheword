@@ -1,0 +1,28 @@
+-istraziti nacin komunikacije igraca sa serverom
+-napraviti kostur klijent aplikacije
+-napraviti kostur server aplikacije
+-podesiti alat za kontrolu verzija i postaviti aplikacije na njega
+-projektovati bazu podataka
+-napraviti bazu podataka
+-dodati osnovan dizajn u klijent aplikaciju
+-istraziti Angular frejmvork
+-istraziti XSocket frejmvork
+-napraviti REST API na serveru
+-napraviti REST API na klijentu
+-povezati server i klijent preko REST interfejsa
+-omoguciti login
+	- registraciju
+	- pravljenje nove sobe
+	- ulazak u sobu
+-napraviti stranicu za igru sa osnovnim elementima
+-omoguciti crtanje na Canvasu
+-dodati napredne tehnike crtanja
+-dodati tajmer i podesiti da igra traje 60 sekundi (ili koliko vec)
+-omoguciti pogadjanje 
+-napraviti XSocket API na serveru
+-napraviti XSocket API na klijentu
+-povezati klijent i server preko XSocket interfejsa
+-hostovati server na aplikativni server
+-postaviti klijent aplikaciju na Alas
+-povezati klijent i hostovan server (ovo radi za REST ne za Sockete)
+-srediti dizajn
